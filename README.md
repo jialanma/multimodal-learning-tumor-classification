@@ -2,7 +2,9 @@
 
 Predict Nottingham histologic grade (Grade 1 / 2 / 3) from the [Duke Breast Cancer MRI](https://wiki.cancerimagingarchive.net/pages/viewpage.action?pageId=70226903) dataset using multimodal learning: DCE-MRI imaging + clinical features.
 
-Two complementary approaches are implemented:
+> **Note:** This is an ongoing project. The baselines below establish competitive reference points for Nottingham grade prediction. A multiplex graph network is under development to improve classification accuracy by modeling richer inter-modal and spatial relationships.
+
+Two baseline approaches are currently implemented:
 
 1. **Ovis2 VLM few-shot** -- a vision-language model (AIDC-AI/Ovis2-4B) that reads DCE composite images and clinical metadata through natural language prompts.
 2. **Swin-Tiny + Clinical MLP** -- a frozen Swin-Tiny image encoder fused with an MLP over encoded clinical features, trained with 5-fold cross-validated grid search.
@@ -216,7 +218,31 @@ DCE RGB Composite (R=pre, G=post1, B=subtraction)
     |
     |---> [Ovis2 VLM] Few-shot prompt + clinical text -> Grade prediction
     |
-    \---> [Swin-Tiny] Frozen encoder -> 768-d embedding --\
-                                                           |---> Fusion MLP -> Grade prediction
-         Clinical features -> Encoded 31-d vector -------/
+    \---> [Swin-Tiny + Clinical MLP]  (see Fusion MLP below)
 ```
+
+### Fusion MLP architecture
+
+The image and clinical modalities have very different dimensionalities (768-d vs 31-d). A projection layer maps each branch into a shared embedding space before fusion.
+
+```
+Image branch:     Swin-Tiny (frozen) -> 768-d -> Linear(768, proj_dim) -> ReLU -> proj_dim-d
+Clinical branch:  31-d encoded features -------> Linear(31, proj_dim)  -> ReLU -> proj_dim-d
+                                                       |                           |
+                                                       \--- Concatenate -----------/
+                                                                  |
+                                                           2 * proj_dim-d
+                                                                  |
+                                                                  v
+                                                  Linear(2*proj_dim, hidden_dim) -> ReLU -> Dropout
+                                                                  |
+                                                                  v
+                                                  Linear(hidden_dim, 3) -> Grade 1 / 2 / 3
+```
+
+**Key design choices:**
+
+- **Projection layers** -- both the 768-d image embedding and the 31-d clinical vector are projected to the same dimensionality (`proj_dim`, default 32 or 64) via learned linear layers. This puts both modalities on equal footing before fusion, preventing the higher-dimensional image branch from dominating.
+- **Concatenation fusion** -- the two projected embeddings are simply concatenated into a single `2 * proj_dim` vector. This is a straightforward early-fusion strategy that lets the downstream classifier learn cross-modal interactions.
+- **Frozen image encoder** -- the Swin-Tiny backbone is pretrained on ImageNet and kept frozen. Only the projection layers and classifier head are trained, which avoids overfitting given the small dataset (~100 patients).
+- **Clinical feature encoding** -- the 31-d clinical vector is composed of 20 binary features (0/1), 8 one-hot categorical features, and 3 standard-scaled numerical features.
