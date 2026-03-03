@@ -250,7 +250,7 @@ Clinical branch:  31-d encoded features -------> Linear(31, proj_dim)  -> ReLU -
 - **Balanced batch sampling** -- a `WeightedRandomSampler` oversamples minority classes (Grade 1, Grade 3) so each training batch has roughly equal class representation, counteracting the Grade 2-heavy class imbalance.
 - **Early stopping** -- training halts if the validation loss does not improve for 20 consecutive epochs (patience=20), and the best-performing weights are restored. This prevents overfitting on the small dataset.
 
-## Key Findings
+## Key Findings from Baseline
 
 ### Image preprocessing
 
