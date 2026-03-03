@@ -144,6 +144,68 @@ tumor-classify ovis2 --crop proportional
 tumor-classify swin
 ```
 
+## DICOM Image Processing
+
+### From 3D volume to 2D composite
+
+Each patient in the Duke dataset has multiple MRI series acquired during a Dynamic Contrast-Enhanced (DCE) protocol. The raw data is a set of 3D DICOM volumes (one per contrast phase), where each volume contains ~100-200 axial slices of shape ~512x512.
+
+**Step 1: Series identification.** Two series are selected per patient based on `SeriesDescription` metadata:
+- **Pre-contrast** (`ax dyn pre`) -- baseline scan before gadolinium injection
+- **1st post-contrast** (`ax dyn 1st pass`) -- first scan after gadolinium injection, where tumors show contrast uptake
+
+**Step 2: Slice selection.** The `Annotation_Boxes.xlsx` file provides the tumor's bounding box including `Start Slice` and `End Slice` (the axial range containing the tumor). Three slices are sampled around the tumor center (e.g., for a tumor spanning slices 89-112, center=100, we take slices 99, 100, 101).
+
+**Step 3: DCE RGB composite.** Each selected 2D axial slice is converted from two grayscale images (pre and post-contrast) into a single RGB image:
+
+| Channel | Source | What it shows |
+|---------|--------|---------------|
+| **Red** | Pre-contrast slice | Baseline tissue signal (anatomy) |
+| **Green** | 1st post-contrast slice | Signal after gadolinium (enhanced vasculature) |
+| **Blue** | Subtraction (post - pre) | Contrast uptake only (highlights enhancement regions) |
+
+Each channel is independently min-max normalized to [0, 255]. The subtraction channel is floored at zero (negative values clipped). This encoding means:
+- **Bright blue/cyan areas** = strong contrast uptake, often indicative of tumor vascularity
+- **Gray/white areas** = similar signal in all phases (normal tissue)
+- **Red-dominant areas** = signal present pre-contrast but reduced post-contrast
+
+### Cropping strategies
+
+The full axial slice is ~512x512 pixels but the tumor region is typically small. Three crop modes are supported:
+
+| Mode | Description |
+|------|-------------|
+| `proportional` | Crop to the annotation bounding box + 25% padding (proportional to the larger bbox dimension, minimum 5px). Small tumors get tight crops, large tumors get wider margins. |
+| `fixed256` | Crop a fixed 256x256 pixel window centered on the bounding box center. If the window extends beyond the image boundary, it shifts inward. |
+| `none` | No crop -- use the full axial slice as-is. |
+
+### Summary
+
+```
+Patient DICOM folder
+  |
+  |-- ax dyn pre (3D volume, ~160 slices)
+  |-- ax dyn 1st pass (3D volume, ~160 slices)
+  |
+  v  Select 3 slices around tumor center (from annotation bbox)
+  |
+  v  For each slice:
+  |    pre[slice]  -----> R channel (normalized 0-255)
+  |    post[slice] -----> G channel (normalized 0-255)
+  |    post - pre  -----> B channel (clipped >=0, normalized 0-255)
+  |                           |
+  |                           v
+  |                    RGB composite image
+  |                           |
+  |                           v
+  |                    Crop (proportional / fixed256 / none)
+  |                           |
+  |                           v
+  |                    Saved as PNG
+  v
+3 PNG composites per patient --> fed to Ovis2 VLM or Swin-Tiny encoder
+```
+
 ## Pipeline Overview
 
 ```

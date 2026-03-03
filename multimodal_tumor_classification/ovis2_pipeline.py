@@ -9,7 +9,7 @@ from PIL import Image
 from collections import Counter
 from transformers import AutoConfig, AutoModelForCausalLM
 
-from .config import DEVICE, LABEL_NAMES, LABEL_MAP, SLICES_PER_PATIENT, RANDOM_SEED
+from .config import DEVICE, LABEL_NAMES, SLICES_PER_PATIENT, RANDOM_SEED
 from .dataset import build_dataset
 from .prompts import select_few_shot_examples, format_few_shot_block, build_prompt
 from .evaluation import evaluate_predictions
@@ -108,8 +108,8 @@ def classify_patient(model, text_tok, vis_tok,
 
 
 def run_ovis2_pipeline(crop_mode: str = "proportional",
-                       num_patients: int = None,
-                       output_dir: str = None):
+                       num_patients: int | None = None,
+                       output_dir: str | None = None):
     """Full Ovis2 pipeline: build dataset -> load model -> classify -> evaluate -> save."""
     random.seed(RANDOM_SEED)
     np.random.seed(RANDOM_SEED)
