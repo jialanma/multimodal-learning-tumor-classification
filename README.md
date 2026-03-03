@@ -227,17 +227,18 @@ The image and clinical modalities have very different dimensionalities (768-d vs
 
 ```
 Image branch:     Swin-Tiny (frozen) -> 768-d -> Linear(768, proj_dim) -> ReLU -> proj_dim-d
+                                                                                      |
 Clinical branch:  31-d encoded features -------> Linear(31, proj_dim)  -> ReLU -> proj_dim-d
-                                                       |                           |
-                                                       \--- Concatenate -----------/
-                                                                  |
-                                                           2 * proj_dim-d
-                                                                  |
-                                                                  v
-                                                  Linear(2*proj_dim, hidden_dim) -> ReLU -> Dropout
-                                                                  |
-                                                                  v
-                                                  Linear(hidden_dim, 3) -> Grade 1 / 2 / 3
+                                                                                      |
+                                                                                Concatenate
+                                                                                      |
+                                                                               2 * proj_dim-d
+                                                                                      |
+                                                                                      v
+                                                          Linear(2*proj_dim, hidden_dim) -> ReLU -> Dropout
+                                                                                      |
+                                                                                      v
+                                                          Linear(hidden_dim, 3) -> Grade 1 / 2 / 3
 ```
 
 **Key design choices:**
