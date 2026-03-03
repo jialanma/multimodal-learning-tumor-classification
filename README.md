@@ -249,3 +249,15 @@ Clinical branch:  31-d encoded features -------> Linear(31, proj_dim)  -> ReLU -
 - **Clinical feature encoding** -- the 31-d clinical vector is composed of 20 binary features (0/1), 8 one-hot categorical features, and 3 standard-scaled numerical features.
 - **Balanced batch sampling** -- a `WeightedRandomSampler` oversamples minority classes (Grade 1, Grade 3) so each training batch has roughly equal class representation, counteracting the Grade 2-heavy class imbalance.
 - **Early stopping** -- training halts if the validation loss does not improve for 20 consecutive epochs (patience=20), and the best-performing weights are restored. This prevents overfitting on the small dataset.
+
+## Key Findings
+
+### Image preprocessing
+
+- **RGB composites outperform grayscale.** Encoding pre-contrast, post-contrast, and subtraction images into separate RGB channels produced better results than using single-channel grayscale inputs. The RGB composite integrates more information about tumor contrast uptake into a single image and emulates how radiologists analyze DCE-MRI by comparing pre- and post-contrast phases side by side.
+- **Cropping to the tumor region improves performance.** Narrowing the field of view to the annotated bounding box (with either proportional or fixed-size padding) consistently improved classification accuracy over using full-size slices. The crop provides visual assistance that helps the model focus on the tumor rather than irrelevant background tissue.
+
+### Unimodal vs. multimodal model performance
+
+- **Image-only performance is comparable to multimodal.** The image-only unimodal model achieves balanced accuracy on par with the multimodal (image + clinical) model, suggesting that the Swin-Tiny image features already capture most of the discriminative signal for Nottingham grading.
+- **Multimodal model fails to identify Grade 1 tumors.** Grade 1 tumors closely resemble normal breast tissue with minimal contrast uptake, making them difficult to distinguish visually. The multimodal fusion model struggles with this class, misclassifying most Grade 1 cases as Grade 2. This highlights a key limitation that more advanced architectures (e.g., multiplex graph networks) may need to address.
