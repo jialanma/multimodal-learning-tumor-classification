@@ -1,0 +1,9 @@
+output/
+data/Duke-Breast-Cancer-MRI/
+__pycache__/
+*.pyc
+.DS_Store
+*.egg-info/
+dist/
+build/
+data/~$*

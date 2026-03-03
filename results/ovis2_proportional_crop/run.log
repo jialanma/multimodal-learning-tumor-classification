@@ -1,0 +1,173 @@
+============================================================
+PHASE 1: Building DCE composites from DICOM
+============================================================
+[  1/all] Processing Breast_MRI_024... cached
+[  2/all] Processing Breast_MRI_031... cached
+[  3/all] Processing Breast_MRI_061... cached
+[  4/all] Processing Breast_MRI_064... cached
+[  5/all] Processing Breast_MRI_067... cached
+[  6/all] Processing Breast_MRI_071... cached
+[  7/all] Processing Breast_MRI_073... cached
+[  8/all] Processing Breast_MRI_087... cached
+[  9/all] Processing Breast_MRI_097... cached
+[ 10/all] Processing Breast_MRI_108... cached
+[ 11/all] Processing Breast_MRI_111... cached
+[ 12/all] Processing Breast_MRI_137... cached
+[ 13/all] Processing Breast_MRI_138... cached
+[ 14/all] Processing Breast_MRI_142... cached
+[ 15/all] Processing Breast_MRI_193... cached
+[ 16/all] Processing Breast_MRI_209... cached
+[ 17/all] Processing Breast_MRI_210... cached
+[ 18/all] Processing Breast_MRI_240... cached
+[ 19/all] Processing Breast_MRI_245... cached
+[ 20/all] Processing Breast_MRI_255... cached
+[ 21/all] Processing Breast_MRI_260... cached
+[ 22/all] Processing Breast_MRI_295... cached
+[ 23/all] Processing Breast_MRI_297... cached
+[ 24/all] Processing Breast_MRI_312... cached
+[ 25/all] Processing Breast_MRI_313... cached
+[ 26/all] Processing Breast_MRI_315... cached
+[ 27/all] Processing Breast_MRI_322... cached
+[ 28/all] Processing Breast_MRI_327... cached
+[ 29/all] Processing Breast_MRI_353... cached
+[ 30/all] Processing Breast_MRI_362... cached
+[ 31/all] Processing Breast_MRI_368... cached
+[ 32/all] Processing Breast_MRI_410... cached
+[ 33/all] Processing Breast_MRI_429... cached
+[ 34/all] Processing Breast_MRI_431... cached
+[ 35/all] Processing Breast_MRI_445... cached
+[ 36/all] Processing Breast_MRI_465... cached
+[ 37/all] Processing Breast_MRI_494... cached
+[ 38/all] Processing Breast_MRI_500... cached
+[ 39/all] Processing Breast_MRI_526... cached
+[ 40/all] Processing Breast_MRI_539... cached
+[ 41/all] Processing Breast_MRI_540... cached
+[ 42/all] Processing Breast_MRI_553... cached
+[ 43/all] Processing Breast_MRI_586... cached
+[ 44/all] Processing Breast_MRI_606... cached
+[ 45/all] Processing Breast_MRI_665... cached
+[ 46/all] Processing Breast_MRI_671... cached
+[ 47/all] Processing Breast_MRI_708... cached
+[ 48/all] Processing Breast_MRI_712... cached
+[ 49/all] Processing Breast_MRI_716... cached
+[ 50/all] Processing Breast_MRI_717... cached
+[ 51/all] Processing Breast_MRI_738... cached
+[ 52/all] Processing Breast_MRI_760... cached
+[ 53/all] Processing Breast_MRI_766... cached
+[ 54/all] Processing Breast_MRI_794... cached
+[ 55/all] Processing Breast_MRI_799... cached
+[ 56/all] Processing Breast_MRI_831... cached
+[ 57/all] Processing Breast_MRI_852... cached
+[ 58/all] Processing Breast_MRI_866... cached
+[ 59/all] Processing Breast_MRI_873... cached
+[ 60/all] Processing Breast_MRI_920... cached
+
+Dataset: 60 patients
+Grade distribution: Counter({1: 29, 2: 17, 0: 14})
+
+Ready: 60 patients × 3 slices = 180 inference calls
+
+============================================================
+PHASE 2: Few-shot classification
+============================================================
+Loading Ovis2-4B on mps...
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:00<00:00,  9.18it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00,  9.75it/s]
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Model loaded (all parameters frozen)
+[  1/60] Breast_MRI_024       | true=Grade 1  | pred=Grade 1  | slices=[0, 0, 0] ✓
+[  2/60] Breast_MRI_031       | true=Grade 1  | pred=Grade 3  | slices=[2, 2, 2] ✗
+[  3/60] Breast_MRI_061       | true=Grade 3  | pred=Grade 3  | slices=[2, 2, 2] ✓
+[  4/60] Breast_MRI_064       | true=Grade 2  | pred=Grade 2  | slices=[1, 1, 1] ✓
+[  5/60] Breast_MRI_067       | true=Grade 2  | pred=Grade 1  | slices=[0, 1, 0] ✗
+[  6/60] Breast_MRI_071       | true=Grade 3  | pred=Grade 1  | slices=[0, 0, 0] ✗
+[  7/60] Breast_MRI_073       | true=Grade 1  | pred=Grade 2  | slices=[1, 1, 1] ✗
+[  8/60] Breast_MRI_087       | true=Grade 2  | pred=Grade 1  | slices=[0, 0, 0] ✗
+[  9/60] Breast_MRI_097       | true=Grade 3  | pred=Grade 2  | slices=[1, 1, 1] ✗
+[ 10/60] Breast_MRI_108       | true=Grade 3  | pred=Grade 2  | slices=[1, 1, 1] ✗
+[ 11/60] Breast_MRI_111       | true=Grade 2  | pred=Grade 2  | slices=[1, 1, 1] ✓
+[ 12/60] Breast_MRI_137       | true=Grade 2  | pred=Grade 1  | slices=[0, 0, 0] ✗
+[ 13/60] Breast_MRI_138       | true=Grade 1  | pred=Grade 2  | slices=[1, 1, 1] ✗
+[ 14/60] Breast_MRI_142       | true=Grade 3  | pred=Grade 2  | slices=[1, 1, 1] ✗
+[ 15/60] Breast_MRI_193       | true=Grade 1  | pred=Grade 1  | slices=[0, 0, 0] ✓
+[ 16/60] Breast_MRI_209       | true=Grade 2  | pred=Grade 2  | slices=[1, 1, 1] ✓
+[ 17/60] Breast_MRI_210       | true=Grade 3  | pred=Grade 3  | slices=[2, 2, 2] ✓
+[ 18/60] Breast_MRI_240       | true=Grade 3  | pred=Grade 1  | slices=[0, 0, 0] ✗
+[ 19/60] Breast_MRI_245       | true=Grade 2  | pred=Grade 2  | slices=[1, 1, 1] ✓
+[ 20/60] Breast_MRI_255       | true=Grade 3  | pred=Grade 2  | slices=[1, 1, 1] ✗
+[ 21/60] Breast_MRI_260       | true=Grade 2  | pred=Grade 3  | slices=[2, 2, 2] ✗
+[ 22/60] Breast_MRI_295       | true=Grade 3  | pred=Grade 1  | slices=[0, 0, 0] ✗
+[ 23/60] Breast_MRI_297       | true=Grade 3  | pred=Grade 2  | slices=[1, 1, 1] ✗
+[ 24/60] Breast_MRI_312       | true=Grade 2  | pred=Grade 1  | slices=[0, 0, 0] ✗
+[ 25/60] Breast_MRI_313       | true=Grade 3  | pred=Grade 3  | slices=[2, 2, 2] ✓
+[ 26/60] Breast_MRI_315       | true=Grade 3  | pred=Grade 3  | slices=[2, 2, 2] ✓
+[ 27/60] Breast_MRI_322       | true=Grade 2  | pred=Grade 2  | slices=[1, 1, 1] ✓
+[ 28/60] Breast_MRI_327       | true=Grade 2  | pred=Grade 2  | slices=[1, 1, 1] ✓
+[ 29/60] Breast_MRI_353       | true=Grade 2  | pred=Grade 3  | slices=[2, 2, 2] ✗
+[ 30/60] Breast_MRI_362       | true=Grade 3  | pred=Grade 1  | slices=[0, 1, 0] ✗
+[ 31/60] Breast_MRI_368       | true=Grade 2  | pred=Grade 3  | slices=[2, 2, 2] ✗
+[ 32/60] Breast_MRI_410       | true=Grade 1  | pred=Grade 2  | slices=[1, 1, 1] ✗
+[ 33/60] Breast_MRI_429       | true=Grade 2  | pred=Grade 3  | slices=[2, 2, 2] ✗
+[ 34/60] Breast_MRI_431       | true=Grade 1  | pred=Grade 3  | slices=[2, 2, 2] ✗
+[ 35/60] Breast_MRI_445       | true=Grade 2  | pred=Grade 3  | slices=[2, 2, 2] ✗
+[ 36/60] Breast_MRI_465       | true=Grade 3  | pred=Grade 3  | slices=[2, 2, 2] ✓
+[ 37/60] Breast_MRI_494       | true=Grade 2  | pred=Grade 1  | slices=[0, 0, 0] ✗
+[ 38/60] Breast_MRI_500       | true=Grade 2  | pred=Grade 2  | slices=[1, 1, 1] ✓
+[ 39/60] Breast_MRI_526       | true=Grade 1  | pred=Grade 2  | slices=[1, 1, 1] ✗
+[ 40/60] Breast_MRI_539       | true=Grade 3  | pred=Grade 3  | slices=[2, 2, 2] ✓
+[ 41/60] Breast_MRI_540       | true=Grade 1  | pred=Grade 2  | slices=[1, 1, 1] ✗
+[ 42/60] Breast_MRI_553       | true=Grade 2  | pred=Grade 2  | slices=[1, 1, 1] ✓
+[ 43/60] Breast_MRI_586       | true=Grade 2  | pred=Grade 2  | slices=[1, 1, 1] ✓
+[ 44/60] Breast_MRI_606       | true=Grade 1  | pred=Grade 2  | slices=[1, 1, 1] ✗
+[ 45/60] Breast_MRI_665       | true=Grade 2  | pred=Grade 1  | slices=[0, 0, 0] ✗
+[ 46/60] Breast_MRI_671       | true=Grade 2  | pred=Grade 2  | slices=[1, 1, 1] ✓
+[ 47/60] Breast_MRI_708       | true=Grade 1  | pred=Grade 3  | slices=[2, 2, 2] ✗
+[ 48/60] Breast_MRI_712       | true=Grade 2  | pred=Grade 2  | slices=[1, 1, 1] ✓
+[ 49/60] Breast_MRI_716       | true=Grade 1  | pred=Grade 2  | slices=[1, 1, 1] ✗
+[ 50/60] Breast_MRI_717       | true=Grade 3  | pred=Grade 3  | slices=[2, 2, 2] ✓
+[ 51/60] Breast_MRI_738       | true=Grade 2  | pred=Grade 2  | slices=[1, 1, 1] ✓
+[ 52/60] Breast_MRI_760       | true=Grade 1  | pred=Grade 3  | slices=[2, 2, 2] ✗
+[ 53/60] Breast_MRI_766       | true=Grade 1  | pred=Grade 3  | slices=[2, 2, 2] ✗
+[ 54/60] Breast_MRI_794       | true=Grade 2  | pred=Grade 2  | slices=[1, 1, 1] ✓
+[ 55/60] Breast_MRI_799       | true=Grade 2  | pred=Grade 2  | slices=[1, 1, 0] ✓
+[ 56/60] Breast_MRI_831       | true=Grade 2  | pred=Grade 2  | slices=[1, 1, 1] ✓
+[ 57/60] Breast_MRI_852       | true=Grade 2  | pred=Grade 3  | slices=[2, 2, 2] ✗
+[ 58/60] Breast_MRI_866       | true=Grade 2  | pred=Grade 3  | slices=[2, 1, 2] ✗
+[ 59/60] Breast_MRI_873       | true=Grade 3  | pred=Grade 3  | slices=[2, 2, 2] ✓
+[ 60/60] Breast_MRI_920       | true=Grade 2  | pred=Grade 2  | slices=[1, 1, 1] ✓
+
+============================================================
+PHASE 3: Evaluation
+============================================================
+
+============================================================
+EVALUATION RESULTS
+============================================================
+
+Classification Report:
+              precision    recall  f1-score   support
+
+     Grade 1       0.17      0.14      0.15        14
+     Grade 2       0.57      0.55      0.56        29
+     Grade 3       0.40      0.47      0.43        17
+
+    accuracy                           0.43        60
+   macro avg       0.38      0.39      0.38        60
+weighted avg       0.43      0.43      0.43        60
+
+Macro F1:          0.383
+Balanced Accuracy: 0.388
+Accuracy:          0.433
+
+Confusion Matrix (rows=true, cols=predicted):
+              Pred G1  Pred G2  Pred G3
+Grade 1             2        7        5
+Grade 2             6       16        7
+Grade 3             4        5        8
+
+Slice agreement:   93.3% patients had all slices agree
+Parse failures:    0/180 slices (0.0%)
+
+All results saved to /Users/jialanma/Desktop/multimodal_learning/competitive_baseline/output/v6/v6_results.json

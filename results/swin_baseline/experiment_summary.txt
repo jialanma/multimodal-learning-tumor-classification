@@ -1,0 +1,106 @@
+======================================================================
+EXPERIMENT SUMMARY — Multimodal Swin-Tiny Baseline
+======================================================================
+
+--- MODEL ARCHITECTURE ---
+Image encoder:    Swin-Tiny (torchvision, ImageNet-1K pretrained, frozen)
+Image embedding:  768-d (avg-pooled over 3 slices per patient)
+Image projection: Linear(768, 32) + ReLU
+Clinical input:   31-d encoded features
+  - Binary features (0/1):    20
+  - One-hot categorical:      9  (Menopause (at diagnosis) (3), HER2 (3), Definitive Surgery Type (3))
+  - Numerical (std-scaled):   2
+Clinical projection: Linear(31, 32) + ReLU
+Fusion:           Concatenate (2 x 32 = 64)
+Classifier:       Linear(64, 128) + ReLU + Dropout(0.7) + Linear(128, 3)
+
+--- IMAGE PREPROCESSING ---
+Source:           output/v7_256crop/composites/<pid>/slice_*_dce.png  (256x256 RGB)
+Resize:           224 x 224 (bilinear)
+To tensor:        HWC uint8 [0,255] -> CHW float32 [0,1]
+Normalize:        mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]  (ImageNet)
+Slice aggregation: Average pool 3 slice embeddings -> 1 per patient
+
+--- DATA ---
+Total patients:   100
+Grade distribution: Grade 1=27, Grade 2=53, Grade 3=20
+Train / Test:     80 / 20  (80/20 stratified split)
+  Train grades:   G1=22, G2=42, G3=16
+  Test grades:    G1=5, G2=11, G3=4
+
+--- TRAINING ---
+Optimizer:        Adam
+Max epochs:       200
+Early stopping:   patience=20 (restore best weights)
+Batch size:       16
+CV folds:         5
+Grid search:      144 hyperparameter combinations
+
+--- BEST HYPERPARAMETERS (from 5-fold CV) ---
+Learning rate:    0.0005
+Class weight:     none
+Dropout:          0.7
+Hidden dim:       128
+Weight decay:     0
+Projection dim:   32
+CV Macro F1:      0.4397 +/- 0.1519
+
+--- TOP 5 HYPERPARAMETER COMBINATIONS ---
+Rank        F1     Std        LR        CW  Drop  Hid       WD  Proj
+  1     0.4397  0.1519    0.0005      none   0.7  128   0.0000    32
+  2     0.4227  0.1666    0.0005      none   0.7   64   0.0000    32
+  3     0.4091  0.1587    0.0005      none   0.7  128   0.0001    32
+  4     0.4053  0.1829    0.0001      none   0.3  128   0.0001    32
+  5     0.4034  0.1603    0.0005      none   0.3   64   0.0001    32
+
+--- TRAINING HISTORY ---
+Epochs run:       46 / 200 max
+Early stopped:    yes, at epoch 46
+Best val loss:    0.8647 at epoch 26 (weights restored)
+Final train loss: 0.1569
+Final val loss:   0.9806
+
+--- TEST SET RESULTS ---
+Accuracy:          0.7000
+Balanced Accuracy: 0.6727
+Macro F1:          0.6667
+Micro F1:          0.7000
+  Grade 1 F1:      0.2500
+  Grade 2 F1:      0.7500
+  Grade 3 F1:      1.0000
+
+Macro AUC:         0.7969
+  Grade 1 AUC:     0.6533
+  Grade 2 AUC:     0.7374
+  Grade 3 AUC:     1.0000
+
+Confusion Matrix (rows=true, cols=predicted):
+                Pred G1  Pred G2  Pred G3
+  Grade 1             1        4        0
+  Grade 2             2        9        0
+  Grade 3             0        0        4
+
+--- PER-PATIENT TEST PREDICTIONS ---
+  Patient                    True     Pred  Correct   P(G1)  P(G2)  P(G3)
+  Breast_MRI_738          Grade 2  Grade 2        Y   0.119  0.659  0.222
+  Breast_MRI_425          Grade 1  Grade 2        N   0.436  0.474  0.090
+  Breast_MRI_441          Grade 2  Grade 2        Y   0.191  0.592  0.217
+  Breast_MRI_920          Grade 2  Grade 2        Y   0.177  0.700  0.123
+  Breast_MRI_232          Grade 1  Grade 2        N   0.344  0.458  0.198
+  Breast_MRI_315          Grade 3  Grade 3        Y   0.201  0.296  0.503
+  Breast_MRI_320          Grade 2  Grade 2        Y   0.166  0.517  0.318
+  Breast_MRI_635          Grade 2  Grade 1        N   0.350  0.350  0.300
+  Breast_MRI_362          Grade 3  Grade 3        Y   0.326  0.239  0.435
+  Breast_MRI_540          Grade 1  Grade 1        Y   0.475  0.408  0.117
+  Breast_MRI_452          Grade 2  Grade 2        Y   0.422  0.501  0.076
+  Breast_MRI_708          Grade 1  Grade 2        N   0.141  0.484  0.375
+  Breast_MRI_794          Grade 2  Grade 2        Y   0.279  0.585  0.136
+  Breast_MRI_860          Grade 2  Grade 2        Y   0.256  0.394  0.350
+  Breast_MRI_465          Grade 3  Grade 3        Y   0.085  0.391  0.523
+  Breast_MRI_312          Grade 2  Grade 1        N   0.502  0.292  0.206
+  Breast_MRI_240          Grade 3  Grade 3        Y   0.262  0.357  0.381
+  Breast_MRI_291          Grade 1  Grade 2        N   0.216  0.430  0.354
+  Breast_MRI_064          Grade 2  Grade 2        Y   0.251  0.441  0.308
+  Breast_MRI_494          Grade 2  Grade 2        Y   0.211  0.445  0.344
+
+Total runtime: 77.5s

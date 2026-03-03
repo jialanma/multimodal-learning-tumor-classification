@@ -1,0 +1,993 @@
+{
+  "config": {
+    "num_patients": 60,
+    "slices_per_patient": 3,
+    "crop_padding": "proportional (25% of bbox size, min 5px)",
+    "model": "AIDC-AI/Ovis2-4B",
+    "strategy": "DCE RGB composite + few-shot prompting + majority vote"
+  },
+  "metrics": {
+    "macro_f1": 0.382560698350172,
+    "balanced_accuracy": 0.38838983869409827,
+    "accuracy": 0.43333333333333335,
+    "confusion_matrix": [
+      [
+        2,
+        7,
+        5
+      ],
+      [
+        6,
+        16,
+        7
+      ],
+      [
+        4,
+        5,
+        8
+      ]
+    ]
+  },
+  "predictions": [
+    {
+      "pid": "Breast_MRI_024",
+      "true_label": 0,
+      "final_pred": 0,
+      "slice_preds": [
+        0,
+        0,
+        0
+      ],
+      "raw_outputs": [
+        "Grade 1",
+        "Grade 1",
+        "Grade 1"
+      ],
+      "clinical": "Menopause: Post-menopausal; ER: Positive; PR: Positive; Surgery: Yes; Adjuvant Radiation Therapy: Yes; Adjuvant Endocrine Therapy: Yes; Pec/Chest Involvement: No; HER2: Negative; Multicentric/Multifocal: No; Lymphadenopathy: No; Definitive Surgery Type: BCS; Neoadjuvant Chemo: No; Adjuvant Chemo: No; Neoadjuvant Anti-HER2: No; Adjuvant Anti-HER2: No; Metastatic at Presentation: No; Contralateral Breast Involvement: No; Staging M: -1; Skin/Nipple Involvement: No; Neoadjuvant Radiation Therapy: Yes; Recurrence: No; Known Ovarian Status: No; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No; Staging N: 0"
+    },
+    {
+      "pid": "Breast_MRI_031",
+      "true_label": 0,
+      "final_pred": 2,
+      "slice_preds": [
+        2,
+        2,
+        2
+      ],
+      "raw_outputs": [
+        "Grade 3",
+        "Grade 3",
+        "Grade 3"
+      ],
+      "clinical": "Menopause: Post-menopausal; ER: Positive; PR: Positive; Surgery: No; Adjuvant Radiation Therapy: No; Adjuvant Endocrine Therapy: No; Pec/Chest Involvement: No; HER2: Negative; Multicentric/Multifocal: Yes; Lymphadenopathy: Yes; Definitive Surgery Type: NP; Neoadjuvant Chemo: No; Adjuvant Chemo: No; Neoadjuvant Anti-HER2: No; Adjuvant Anti-HER2: No; Metastatic at Presentation: Yes; Contralateral Breast Involvement: No; Staging M: 1; Skin/Nipple Involvement: Yes; Neoadjuvant Radiation Therapy: Yes; Recurrence: No; Known Ovarian Status: No; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No"
+    },
+    {
+      "pid": "Breast_MRI_061",
+      "true_label": 2,
+      "final_pred": 2,
+      "slice_preds": [
+        2,
+        2,
+        2
+      ],
+      "raw_outputs": [
+        "Grade 3",
+        "Grade 3",
+        "Grade 3"
+      ],
+      "clinical": "Menopause: Post-menopausal; ER: Negative; PR: Negative; Surgery: Yes; Adjuvant Radiation Therapy: No; Adjuvant Endocrine Therapy: No; Pec/Chest Involvement: No; HER2: Negative; Multicentric/Multifocal: Yes; Lymphadenopathy: No; Definitive Surgery Type: Mastectomy; Neoadjuvant Chemo: Yes; Adjuvant Chemo: No; Neoadjuvant Anti-HER2: No; Adjuvant Anti-HER2: No; Metastatic at Presentation: No; Contralateral Breast Involvement: No; Staging M: 0; Skin/Nipple Involvement: Yes; Neoadjuvant Radiation Therapy: No; Recurrence: No; Known Ovarian Status: No; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No; Staging N: 0"
+    },
+    {
+      "pid": "Breast_MRI_064",
+      "true_label": 1,
+      "final_pred": 1,
+      "slice_preds": [
+        1,
+        1,
+        1
+      ],
+      "raw_outputs": [
+        "Grade 2",
+        "Grade 2",
+        "Grade 2"
+      ],
+      "clinical": "Menopause: Post-menopausal; ER: Negative; PR: Negative; Surgery: Yes; Adjuvant Radiation Therapy: Yes; Adjuvant Endocrine Therapy: No; Pec/Chest Involvement: No; HER2: Negative; Multicentric/Multifocal: No; Lymphadenopathy: No; Definitive Surgery Type: BCS; Neoadjuvant Chemo: Yes; Adjuvant Chemo: No; Neoadjuvant Anti-HER2: No; Adjuvant Anti-HER2: No; Metastatic at Presentation: No; Contralateral Breast Involvement: No; Staging M: -1; Skin/Nipple Involvement: No; Neoadjuvant Radiation Therapy: No; Recurrence: No; Known Ovarian Status: No; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No; Staging N: 1"
+    },
+    {
+      "pid": "Breast_MRI_067",
+      "true_label": 1,
+      "final_pred": 0,
+      "slice_preds": [
+        0,
+        1,
+        0
+      ],
+      "raw_outputs": [
+        "Grade 1",
+        "Grade 2",
+        "Grade 1"
+      ],
+      "clinical": "Menopause: Pre-menopausal; ER: Positive; PR: Positive; Surgery: Yes; Adjuvant Radiation Therapy: Yes; Adjuvant Endocrine Therapy: Yes; Pec/Chest Involvement: No; HER2: Negative; Multicentric/Multifocal: No; Lymphadenopathy: No; Definitive Surgery Type: BCS; Neoadjuvant Chemo: No; Adjuvant Chemo: Yes; Neoadjuvant Anti-HER2: No; Adjuvant Anti-HER2: No; Metastatic at Presentation: No; Contralateral Breast Involvement: No; Staging M: 0; Skin/Nipple Involvement: No; Neoadjuvant Radiation Therapy: No; Recurrence: No; Known Ovarian Status: Yes; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No; Staging N: 1"
+    },
+    {
+      "pid": "Breast_MRI_071",
+      "true_label": 2,
+      "final_pred": 0,
+      "slice_preds": [
+        0,
+        0,
+        0
+      ],
+      "raw_outputs": [
+        "Grade 1",
+        "Grade 1",
+        "Grade 1"
+      ],
+      "clinical": "Menopause: Pre-menopausal; ER: Positive; PR: Positive; Surgery: Yes; Adjuvant Radiation Therapy: Yes; Adjuvant Endocrine Therapy: Yes; Pec/Chest Involvement: No; HER2: Negative; Multicentric/Multifocal: Yes; Lymphadenopathy: No; Definitive Surgery Type: BCS; Neoadjuvant Chemo: Yes; Adjuvant Chemo: No; Neoadjuvant Anti-HER2: No; Adjuvant Anti-HER2: No; Metastatic at Presentation: No; Contralateral Breast Involvement: No; Staging M: 0; Skin/Nipple Involvement: No; Neoadjuvant Radiation Therapy: No; Recurrence: No; Known Ovarian Status: No; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No; Staging N: 0"
+    },
+    {
+      "pid": "Breast_MRI_073",
+      "true_label": 0,
+      "final_pred": 1,
+      "slice_preds": [
+        1,
+        1,
+        1
+      ],
+      "raw_outputs": [
+        "Grade 2",
+        "Grade 2",
+        "Grade 2"
+      ],
+      "clinical": "Menopause: Pre-menopausal; ER: Positive; PR: Positive; Surgery: Yes; Adjuvant Radiation Therapy: Yes; Adjuvant Endocrine Therapy: Yes; Pec/Chest Involvement: No; HER2: Negative; Multicentric/Multifocal: Yes; Lymphadenopathy: Yes; Definitive Surgery Type: Mastectomy; Neoadjuvant Chemo: No; Adjuvant Chemo: Yes; Neoadjuvant Anti-HER2: No; Adjuvant Anti-HER2: No; Metastatic at Presentation: No; Contralateral Breast Involvement: No; Staging M: -1; Skin/Nipple Involvement: No; Neoadjuvant Radiation Therapy: No; Recurrence: No; Known Ovarian Status: Yes; Oophorectomy for Endocrine Therapy: Yes; Neoadjuvant Endocrine Therapy: No; Staging N: 2"
+    },
+    {
+      "pid": "Breast_MRI_087",
+      "true_label": 1,
+      "final_pred": 0,
+      "slice_preds": [
+        0,
+        0,
+        0
+      ],
+      "raw_outputs": [
+        "Grade 1",
+        "Grade 1",
+        "Grade 1"
+      ],
+      "clinical": "Menopause: Pre-menopausal; ER: Positive; PR: Positive; Surgery: Yes; Adjuvant Radiation Therapy: No; Adjuvant Endocrine Therapy: Yes; Pec/Chest Involvement: No; HER2: Negative; Multicentric/Multifocal: No; Lymphadenopathy: Yes; Definitive Surgery Type: Mastectomy; Neoadjuvant Chemo: No; Adjuvant Chemo: No; Neoadjuvant Anti-HER2: No; Adjuvant Anti-HER2: No; Metastatic at Presentation: No; Contralateral Breast Involvement: No; Staging M: 0; Skin/Nipple Involvement: No; Neoadjuvant Radiation Therapy: No; Recurrence: No; Known Ovarian Status: No; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No; Staging N: 0"
+    },
+    {
+      "pid": "Breast_MRI_097",
+      "true_label": 2,
+      "final_pred": 1,
+      "slice_preds": [
+        1,
+        1,
+        1
+      ],
+      "raw_outputs": [
+        "Grade 2",
+        "Grade 2",
+        "Grade 2"
+      ],
+      "clinical": "Menopause: Pre-menopausal; ER: Negative; PR: Negative; Surgery: Yes; Adjuvant Radiation Therapy: Yes; Adjuvant Endocrine Therapy: No; Pec/Chest Involvement: No; HER2: Negative; Multicentric/Multifocal: No; Lymphadenopathy: Yes; Definitive Surgery Type: BCS; Neoadjuvant Chemo: Yes; Adjuvant Chemo: No; Neoadjuvant Anti-HER2: No; Adjuvant Anti-HER2: No; Metastatic at Presentation: No; Contralateral Breast Involvement: No; Staging M: 0; Skin/Nipple Involvement: No; Neoadjuvant Radiation Therapy: No; Recurrence: No; Known Ovarian Status: No; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No; Staging N: 1"
+    },
+    {
+      "pid": "Breast_MRI_108",
+      "true_label": 2,
+      "final_pred": 1,
+      "slice_preds": [
+        1,
+        1,
+        1
+      ],
+      "raw_outputs": [
+        "Grade 2",
+        "Grade 2",
+        "Grade 2"
+      ],
+      "clinical": "Menopause: Post-menopausal; ER: Negative; PR: Negative; Surgery: Yes; Adjuvant Radiation Therapy: Yes; Adjuvant Endocrine Therapy: No; Pec/Chest Involvement: No; HER2: Positive; Multicentric/Multifocal: Yes; Lymphadenopathy: Yes; Definitive Surgery Type: Mastectomy; Neoadjuvant Chemo: No; Adjuvant Chemo: Yes; Neoadjuvant Anti-HER2: No; Adjuvant Anti-HER2: Yes; Metastatic at Presentation: No; Contralateral Breast Involvement: No; Staging M: 0; Skin/Nipple Involvement: No; Neoadjuvant Radiation Therapy: No; Recurrence: No; Known Ovarian Status: No; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No; Staging N: 2"
+    },
+    {
+      "pid": "Breast_MRI_111",
+      "true_label": 1,
+      "final_pred": 1,
+      "slice_preds": [
+        1,
+        1,
+        1
+      ],
+      "raw_outputs": [
+        "Grade 2",
+        "Grade 2",
+        "Grade 2"
+      ],
+      "clinical": "Menopause: Post-menopausal; ER: Positive; PR: Positive; Surgery: Yes; Adjuvant Radiation Therapy: Yes; Adjuvant Endocrine Therapy: Yes; Pec/Chest Involvement: No; HER2: Negative; Multicentric/Multifocal: Yes; Lymphadenopathy: Yes; Definitive Surgery Type: BCS; Neoadjuvant Chemo: No; Adjuvant Chemo: No; Neoadjuvant Anti-HER2: No; Adjuvant Anti-HER2: No; Metastatic at Presentation: No; Contralateral Breast Involvement: No; Staging M: 0; Skin/Nipple Involvement: No; Neoadjuvant Radiation Therapy: No; Recurrence: No; Known Ovarian Status: No; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No; Staging N: 0"
+    },
+    {
+      "pid": "Breast_MRI_137",
+      "true_label": 1,
+      "final_pred": 0,
+      "slice_preds": [
+        0,
+        0,
+        0
+      ],
+      "raw_outputs": [
+        "Grade 1",
+        "Grade 1",
+        "Grade 1"
+      ],
+      "clinical": "Menopause: Pre-menopausal; ER: Positive; PR: Positive; Surgery: Yes; Adjuvant Radiation Therapy: Yes; Adjuvant Endocrine Therapy: Yes; Pec/Chest Involvement: No; HER2: Negative; Multicentric/Multifocal: No; Lymphadenopathy: No; Definitive Surgery Type: BCS; Neoadjuvant Chemo: Yes; Adjuvant Chemo: No; Neoadjuvant Anti-HER2: No; Adjuvant Anti-HER2: No; Metastatic at Presentation: No; Contralateral Breast Involvement: No; Staging M: -1; Skin/Nipple Involvement: No; Neoadjuvant Radiation Therapy: No; Recurrence: No; Known Ovarian Status: No; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No; Staging N: 1"
+    },
+    {
+      "pid": "Breast_MRI_138",
+      "true_label": 0,
+      "final_pred": 1,
+      "slice_preds": [
+        1,
+        1,
+        1
+      ],
+      "raw_outputs": [
+        "Grade 2",
+        "Grade 2",
+        "Grade 2"
+      ],
+      "clinical": "Menopause: Post-menopausal; ER: Positive; PR: Positive; Surgery: Yes; Adjuvant Radiation Therapy: Yes; Adjuvant Endocrine Therapy: Yes; Pec/Chest Involvement: No; HER2: Negative; Multicentric/Multifocal: No; Lymphadenopathy: No; Definitive Surgery Type: BCS; Neoadjuvant Chemo: No; Adjuvant Chemo: Yes; Neoadjuvant Anti-HER2: No; Adjuvant Anti-HER2: No; Metastatic at Presentation: No; Contralateral Breast Involvement: No; Staging M: 0; Skin/Nipple Involvement: No; Neoadjuvant Radiation Therapy: No; Recurrence: No; Known Ovarian Status: No; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No; Staging N: 1"
+    },
+    {
+      "pid": "Breast_MRI_142",
+      "true_label": 2,
+      "final_pred": 1,
+      "slice_preds": [
+        1,
+        1,
+        1
+      ],
+      "raw_outputs": [
+        "Grade 2",
+        "Grade 2",
+        "Grade 2"
+      ],
+      "clinical": "Menopause: Pre-menopausal; ER: Negative; PR: Positive; Surgery: Yes; Adjuvant Radiation Therapy: Yes; Adjuvant Endocrine Therapy: Yes; Pec/Chest Involvement: No; HER2: Negative; Multicentric/Multifocal: No; Lymphadenopathy: Yes; Definitive Surgery Type: BCS; Neoadjuvant Chemo: Yes; Adjuvant Chemo: No; Neoadjuvant Anti-HER2: No; Adjuvant Anti-HER2: No; Metastatic at Presentation: No; Contralateral Breast Involvement: No; Staging M: 0; Skin/Nipple Involvement: No; Neoadjuvant Radiation Therapy: No; Recurrence: No; Known Ovarian Status: No; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No; Staging N: 1"
+    },
+    {
+      "pid": "Breast_MRI_193",
+      "true_label": 0,
+      "final_pred": 0,
+      "slice_preds": [
+        0,
+        0,
+        0
+      ],
+      "raw_outputs": [
+        "Grade 1",
+        "Grade 1",
+        "Grade 1"
+      ],
+      "clinical": "Menopause: Post-menopausal; ER: Positive; PR: Positive; Surgery: Yes; Adjuvant Radiation Therapy: No; Adjuvant Endocrine Therapy: Yes; Pec/Chest Involvement: No; HER2: Negative; Multicentric/Multifocal: No; Lymphadenopathy: No; Definitive Surgery Type: BCS; Neoadjuvant Chemo: No; Adjuvant Chemo: No; Neoadjuvant Anti-HER2: No; Adjuvant Anti-HER2: No; Metastatic at Presentation: No; Contralateral Breast Involvement: No; Staging M: 0; Skin/Nipple Involvement: No; Neoadjuvant Radiation Therapy: No; Recurrence: No; Known Ovarian Status: No; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No; Staging N: 0"
+    },
+    {
+      "pid": "Breast_MRI_209",
+      "true_label": 1,
+      "final_pred": 1,
+      "slice_preds": [
+        1,
+        1,
+        1
+      ],
+      "raw_outputs": [
+        "Grade 2",
+        "Grade 2",
+        "Grade 2"
+      ],
+      "clinical": "Menopause: Post-menopausal; ER: Negative; PR: Negative; Surgery: Yes; Adjuvant Radiation Therapy: No; Adjuvant Endocrine Therapy: No; Pec/Chest Involvement: No; HER2: Negative; Multicentric/Multifocal: Yes; Lymphadenopathy: No; Definitive Surgery Type: Mastectomy; Neoadjuvant Chemo: No; Adjuvant Chemo: No; Neoadjuvant Anti-HER2: No; Adjuvant Anti-HER2: No; Metastatic at Presentation: No; Contralateral Breast Involvement: Yes; Staging M: 0; Skin/Nipple Involvement: No; Neoadjuvant Radiation Therapy: No; Recurrence: No; Known Ovarian Status: No; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No; Staging N: 0"
+    },
+    {
+      "pid": "Breast_MRI_210",
+      "true_label": 2,
+      "final_pred": 2,
+      "slice_preds": [
+        2,
+        2,
+        2
+      ],
+      "raw_outputs": [
+        "Grade 3",
+        "Grade 3",
+        "Grade 3"
+      ],
+      "clinical": "Menopause: Pre-menopausal; ER: Negative; PR: Negative; Surgery: Yes; Adjuvant Radiation Therapy: Yes; Adjuvant Endocrine Therapy: No; Pec/Chest Involvement: No; HER2: Negative; Multicentric/Multifocal: No; Lymphadenopathy: No; Definitive Surgery Type: BCS; Neoadjuvant Chemo: No; Adjuvant Chemo: Yes; Neoadjuvant Anti-HER2: No; Adjuvant Anti-HER2: No; Metastatic at Presentation: No; Contralateral Breast Involvement: No; Staging M: 0; Skin/Nipple Involvement: No; Neoadjuvant Radiation Therapy: No; Recurrence: No; Known Ovarian Status: No; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No; Staging N: 0"
+    },
+    {
+      "pid": "Breast_MRI_240",
+      "true_label": 2,
+      "final_pred": 0,
+      "slice_preds": [
+        0,
+        0,
+        0
+      ],
+      "raw_outputs": [
+        "Grade 1",
+        "Grade 1",
+        "Grade 1"
+      ],
+      "clinical": "Menopause: Pre-menopausal; ER: Positive; PR: Positive; Surgery: Yes; Adjuvant Radiation Therapy: Yes; Adjuvant Endocrine Therapy: Yes; Pec/Chest Involvement: No; HER2: Negative; Multicentric/Multifocal: No; Lymphadenopathy: No; Definitive Surgery Type: Mastectomy; Neoadjuvant Chemo: Yes; Adjuvant Chemo: No; Neoadjuvant Anti-HER2: No; Adjuvant Anti-HER2: No; Metastatic at Presentation: No; Contralateral Breast Involvement: Yes; Staging M: 0; Skin/Nipple Involvement: No; Neoadjuvant Radiation Therapy: No; Recurrence: No; Known Ovarian Status: Yes; Oophorectomy for Endocrine Therapy: Yes; Neoadjuvant Endocrine Therapy: No; Staging N: 0"
+    },
+    {
+      "pid": "Breast_MRI_245",
+      "true_label": 1,
+      "final_pred": 1,
+      "slice_preds": [
+        1,
+        1,
+        1
+      ],
+      "raw_outputs": [
+        "Grade 2",
+        "Grade 2",
+        "Grade 2"
+      ],
+      "clinical": "Menopause: Post-menopausal; ER: Positive; PR: Positive; Surgery: Yes; Adjuvant Radiation Therapy: No; Pec/Chest Involvement: No; HER2: Negative; Multicentric/Multifocal: No; Lymphadenopathy: Yes; Definitive Surgery Type: Mastectomy; Metastatic at Presentation: No; Contralateral Breast Involvement: No; Staging M: 0; Skin/Nipple Involvement: No; Neoadjuvant Radiation Therapy: No; Recurrence: No; Known Ovarian Status: No; Oophorectomy for Endocrine Therapy: No; Staging N: 2"
+    },
+    {
+      "pid": "Breast_MRI_255",
+      "true_label": 2,
+      "final_pred": 1,
+      "slice_preds": [
+        1,
+        1,
+        1
+      ],
+      "raw_outputs": [
+        "Grade 2",
+        "Grade 2",
+        "Grade 2"
+      ],
+      "clinical": "Menopause: Pre-menopausal; ER: Positive; PR: Positive; Surgery: Yes; Adjuvant Radiation Therapy: Yes; Adjuvant Endocrine Therapy: Yes; Pec/Chest Involvement: No; HER2: Positive; Multicentric/Multifocal: No; Lymphadenopathy: Yes; Definitive Surgery Type: BCS; Neoadjuvant Chemo: Yes; Adjuvant Chemo: No; Neoadjuvant Anti-HER2: Yes; Adjuvant Anti-HER2: Yes; Metastatic at Presentation: No; Contralateral Breast Involvement: No; Staging M: 0; Skin/Nipple Involvement: No; Neoadjuvant Radiation Therapy: No; Recurrence: No; Known Ovarian Status: Yes; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No; Staging N: 1"
+    },
+    {
+      "pid": "Breast_MRI_260",
+      "true_label": 1,
+      "final_pred": 2,
+      "slice_preds": [
+        2,
+        2,
+        2
+      ],
+      "raw_outputs": [
+        "Grade 3",
+        "Grade 3",
+        "Grade 3"
+      ],
+      "clinical": "Menopause: Pre-menopausal; ER: Positive; PR: Negative; Surgery: Yes; Adjuvant Radiation Therapy: Yes; Adjuvant Endocrine Therapy: Yes; Pec/Chest Involvement: No; HER2: Positive; Multicentric/Multifocal: Yes; Lymphadenopathy: Yes; Definitive Surgery Type: Mastectomy; Neoadjuvant Chemo: Yes; Adjuvant Chemo: No; Neoadjuvant Anti-HER2: Yes; Adjuvant Anti-HER2: Yes; Metastatic at Presentation: No; Contralateral Breast Involvement: No; Staging M: 0; Skin/Nipple Involvement: No; Neoadjuvant Radiation Therapy: No; Recurrence: No; Known Ovarian Status: No; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No; Staging N: 1"
+    },
+    {
+      "pid": "Breast_MRI_295",
+      "true_label": 2,
+      "final_pred": 0,
+      "slice_preds": [
+        0,
+        0,
+        0
+      ],
+      "raw_outputs": [
+        "Grade 1",
+        "Grade 1",
+        "Grade 1"
+      ],
+      "clinical": "Menopause: Post-menopausal; ER: Positive; PR: Positive; Surgery: Yes; Adjuvant Radiation Therapy: No; Adjuvant Endocrine Therapy: Yes; Pec/Chest Involvement: No; HER2: Negative; Multicentric/Multifocal: No; Lymphadenopathy: No; Definitive Surgery Type: Mastectomy; Neoadjuvant Chemo: No; Adjuvant Chemo: No; Neoadjuvant Anti-HER2: No; Adjuvant Anti-HER2: No; Metastatic at Presentation: No; Contralateral Breast Involvement: No; Staging M: -1; Skin/Nipple Involvement: No; Neoadjuvant Radiation Therapy: No; Recurrence: No; Known Ovarian Status: No; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No; Staging N: 0"
+    },
+    {
+      "pid": "Breast_MRI_297",
+      "true_label": 2,
+      "final_pred": 1,
+      "slice_preds": [
+        1,
+        1,
+        1
+      ],
+      "raw_outputs": [
+        "Grade 2",
+        "Grade 2",
+        "Grade 2"
+      ],
+      "clinical": "Menopause: Post-menopausal; ER: Negative; PR: Negative; Surgery: Yes; Adjuvant Radiation Therapy: Yes; Adjuvant Endocrine Therapy: No; Pec/Chest Involvement: No; HER2: Positive; Multicentric/Multifocal: Yes; Lymphadenopathy: No; Definitive Surgery Type: Mastectomy; Neoadjuvant Chemo: No; Adjuvant Chemo: Yes; Neoadjuvant Anti-HER2: No; Adjuvant Anti-HER2: Yes; Metastatic at Presentation: No; Contralateral Breast Involvement: No; Staging M: 0; Skin/Nipple Involvement: No; Neoadjuvant Radiation Therapy: No; Recurrence: No; Known Ovarian Status: No; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No; Staging N: 1"
+    },
+    {
+      "pid": "Breast_MRI_312",
+      "true_label": 1,
+      "final_pred": 0,
+      "slice_preds": [
+        0,
+        0,
+        0
+      ],
+      "raw_outputs": [
+        "Grade 1",
+        "Grade 1",
+        "Grade 1"
+      ],
+      "clinical": "Menopause: Post-menopausal; ER: Positive; PR: Positive; Surgery: Yes; Adjuvant Radiation Therapy: No; Adjuvant Endocrine Therapy: Yes; Pec/Chest Involvement: No; HER2: Negative; Multicentric/Multifocal: No; Lymphadenopathy: No; Definitive Surgery Type: Mastectomy; Neoadjuvant Chemo: No; Adjuvant Chemo: No; Neoadjuvant Anti-HER2: No; Adjuvant Anti-HER2: No; Metastatic at Presentation: No; Contralateral Breast Involvement: No; Staging M: -1; Skin/Nipple Involvement: No; Neoadjuvant Radiation Therapy: No; Recurrence: No; Known Ovarian Status: Yes; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No; Staging N: 0"
+    },
+    {
+      "pid": "Breast_MRI_313",
+      "true_label": 2,
+      "final_pred": 2,
+      "slice_preds": [
+        2,
+        2,
+        2
+      ],
+      "raw_outputs": [
+        "Grade 3",
+        "Grade 3",
+        "Grade 3"
+      ],
+      "clinical": "Menopause: Post-menopausal; ER: Positive; PR: Negative; Surgery: Yes; Adjuvant Radiation Therapy: Yes; Adjuvant Endocrine Therapy: No; Pec/Chest Involvement: No; HER2: Negative; Multicentric/Multifocal: Yes; Lymphadenopathy: Yes; Definitive Surgery Type: Mastectomy; Neoadjuvant Chemo: Yes; Adjuvant Chemo: Yes; Neoadjuvant Anti-HER2: No; Adjuvant Anti-HER2: No; Metastatic at Presentation: No; Contralateral Breast Involvement: Yes; Staging M: -1; Skin/Nipple Involvement: No; Neoadjuvant Radiation Therapy: No; Recurrence: Yes; Known Ovarian Status: No; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No; Staging N: 2"
+    },
+    {
+      "pid": "Breast_MRI_315",
+      "true_label": 2,
+      "final_pred": 2,
+      "slice_preds": [
+        2,
+        2,
+        2
+      ],
+      "raw_outputs": [
+        "Grade 3",
+        "Grade 3",
+        "Grade 3"
+      ],
+      "clinical": "Menopause: Pre-menopausal; ER: Negative; PR: Negative; Surgery: Yes; Adjuvant Radiation Therapy: Yes; Adjuvant Endocrine Therapy: No; Pec/Chest Involvement: No; HER2: Negative; Multicentric/Multifocal: Yes; Lymphadenopathy: Yes; Definitive Surgery Type: Mastectomy; Neoadjuvant Chemo: No; Adjuvant Chemo: Yes; Neoadjuvant Anti-HER2: No; Adjuvant Anti-HER2: No; Metastatic at Presentation: No; Contralateral Breast Involvement: No; Staging M: -1; Skin/Nipple Involvement: Yes; Neoadjuvant Radiation Therapy: No; Recurrence: No; Known Ovarian Status: No; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No; Staging N: 2"
+    },
+    {
+      "pid": "Breast_MRI_322",
+      "true_label": 1,
+      "final_pred": 1,
+      "slice_preds": [
+        1,
+        1,
+        1
+      ],
+      "raw_outputs": [
+        "Grade 2",
+        "Grade 2",
+        "Grade 2"
+      ],
+      "clinical": "Menopause: Pre-menopausal; ER: Positive; PR: Positive; Surgery: No; Adjuvant Radiation Therapy: No; Adjuvant Endocrine Therapy: No; Pec/Chest Involvement: No; HER2: Negative; Multicentric/Multifocal: No; Lymphadenopathy: No; Definitive Surgery Type: NP; Neoadjuvant Chemo: No; Adjuvant Chemo: No; Neoadjuvant Anti-HER2: No; Adjuvant Anti-HER2: No; Metastatic at Presentation: No; Contralateral Breast Involvement: No; Staging M: -1; Skin/Nipple Involvement: No; Neoadjuvant Radiation Therapy: No; Recurrence: No; Known Ovarian Status: No; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: Yes"
+    },
+    {
+      "pid": "Breast_MRI_327",
+      "true_label": 1,
+      "final_pred": 1,
+      "slice_preds": [
+        1,
+        1,
+        1
+      ],
+      "raw_outputs": [
+        "Grade 2",
+        "Grade 2",
+        "Grade 2"
+      ],
+      "clinical": "Menopause: Pre-menopausal; ER: Positive; PR: Negative; Surgery: Yes; Adjuvant Radiation Therapy: No; Adjuvant Endocrine Therapy: No; Pec/Chest Involvement: No; HER2: Positive; Multicentric/Multifocal: Yes; Lymphadenopathy: No; Definitive Surgery Type: Mastectomy; Neoadjuvant Chemo: No; Adjuvant Chemo: Yes; Neoadjuvant Anti-HER2: No; Adjuvant Anti-HER2: Yes; Metastatic at Presentation: No; Contralateral Breast Involvement: No; Staging M: 0; Skin/Nipple Involvement: No; Neoadjuvant Radiation Therapy: No; Recurrence: No; Known Ovarian Status: No; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No; Staging N: 1"
+    },
+    {
+      "pid": "Breast_MRI_353",
+      "true_label": 1,
+      "final_pred": 2,
+      "slice_preds": [
+        2,
+        2,
+        2
+      ],
+      "raw_outputs": [
+        "Grade 3",
+        "Grade 3",
+        "Grade 3"
+      ],
+      "clinical": "Menopause: Pre-menopausal; ER: Positive; PR: Positive; Surgery: Yes; Adjuvant Radiation Therapy: No; Adjuvant Endocrine Therapy: Yes; Pec/Chest Involvement: No; HER2: Positive; Multicentric/Multifocal: No; Lymphadenopathy: Yes; Definitive Surgery Type: Mastectomy; Neoadjuvant Chemo: Yes; Adjuvant Chemo: No; Neoadjuvant Anti-HER2: Yes; Adjuvant Anti-HER2: Yes; Metastatic at Presentation: No; Contralateral Breast Involvement: No; Staging M: 0; Skin/Nipple Involvement: No; Neoadjuvant Radiation Therapy: No; Recurrence: No; Known Ovarian Status: No; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No; Staging N: 1"
+    },
+    {
+      "pid": "Breast_MRI_362",
+      "true_label": 2,
+      "final_pred": 0,
+      "slice_preds": [
+        0,
+        1,
+        0
+      ],
+      "raw_outputs": [
+        "Grade 1",
+        "Grade 2",
+        "Grade 1"
+      ],
+      "clinical": "Menopause: Post-menopausal; ER: Negative; PR: Negative; Surgery: Yes; Adjuvant Radiation Therapy: Yes; Adjuvant Endocrine Therapy: No; Pec/Chest Involvement: No; HER2: Negative; Multicentric/Multifocal: Yes; Lymphadenopathy: No; Definitive Surgery Type: Mastectomy; Neoadjuvant Chemo: No; Adjuvant Chemo: Yes; Neoadjuvant Anti-HER2: No; Adjuvant Anti-HER2: No; Metastatic at Presentation: No; Contralateral Breast Involvement: No; Staging M: 0; Skin/Nipple Involvement: No; Neoadjuvant Radiation Therapy: No; Recurrence: No; Known Ovarian Status: No; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No; Staging N: 0"
+    },
+    {
+      "pid": "Breast_MRI_368",
+      "true_label": 1,
+      "final_pred": 2,
+      "slice_preds": [
+        2,
+        2,
+        2
+      ],
+      "raw_outputs": [
+        "Grade 3",
+        "Grade 3",
+        "Grade 3"
+      ],
+      "clinical": "Menopause: Pre-menopausal; ER: Positive; PR: Positive; Surgery: Yes; Adjuvant Radiation Therapy: No; Adjuvant Endocrine Therapy: No; Pec/Chest Involvement: No; HER2: Positive; Multicentric/Multifocal: No; Lymphadenopathy: Yes; Definitive Surgery Type: Mastectomy; Neoadjuvant Chemo: Yes; Adjuvant Chemo: No; Neoadjuvant Anti-HER2: Yes; Adjuvant Anti-HER2: Yes; Metastatic at Presentation: No; Contralateral Breast Involvement: Yes; Staging M: 0; Skin/Nipple Involvement: No; Neoadjuvant Radiation Therapy: No; Recurrence: No; Known Ovarian Status: No; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No; Staging N: 0"
+    },
+    {
+      "pid": "Breast_MRI_410",
+      "true_label": 0,
+      "final_pred": 1,
+      "slice_preds": [
+        1,
+        1,
+        1
+      ],
+      "raw_outputs": [
+        "Grade 2",
+        "Grade 2",
+        "Grade 2"
+      ],
+      "clinical": "Menopause: Pre-menopausal; ER: Positive; PR: Positive; Surgery: Yes; Adjuvant Radiation Therapy: Yes; Adjuvant Endocrine Therapy: Yes; Pec/Chest Involvement: No; HER2: Negative; Multicentric/Multifocal: No; Lymphadenopathy: Yes; Definitive Surgery Type: BCS; Neoadjuvant Chemo: No; Adjuvant Chemo: Yes; Neoadjuvant Anti-HER2: No; Adjuvant Anti-HER2: No; Metastatic at Presentation: No; Contralateral Breast Involvement: No; Staging M: 0; Skin/Nipple Involvement: No; Neoadjuvant Radiation Therapy: No; Recurrence: No; Known Ovarian Status: No; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No; Staging N: 1"
+    },
+    {
+      "pid": "Breast_MRI_429",
+      "true_label": 1,
+      "final_pred": 2,
+      "slice_preds": [
+        2,
+        2,
+        2
+      ],
+      "raw_outputs": [
+        "Grade 3",
+        "Grade 3",
+        "Grade 3"
+      ],
+      "clinical": "Menopause: Post-menopausal; ER: Negative; PR: Negative; Surgery: Yes; Adjuvant Radiation Therapy: Yes; Adjuvant Endocrine Therapy: No; Pec/Chest Involvement: No; HER2: Positive; Multicentric/Multifocal: Yes; Lymphadenopathy: No; Definitive Surgery Type: BCS; Neoadjuvant Chemo: Yes; Adjuvant Chemo: No; Neoadjuvant Anti-HER2: Yes; Adjuvant Anti-HER2: Yes; Metastatic at Presentation: No; Contralateral Breast Involvement: No; Staging M: 0; Skin/Nipple Involvement: No; Neoadjuvant Radiation Therapy: No; Recurrence: No; Known Ovarian Status: No; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No; Staging N: 0"
+    },
+    {
+      "pid": "Breast_MRI_431",
+      "true_label": 0,
+      "final_pred": 2,
+      "slice_preds": [
+        2,
+        2,
+        2
+      ],
+      "raw_outputs": [
+        "Grade 3",
+        "Grade 3",
+        "Grade 3"
+      ],
+      "clinical": "Menopause: Post-menopausal; ER: Negative; PR: Negative; Surgery: Yes; Adjuvant Radiation Therapy: No; Adjuvant Endocrine Therapy: Yes; Pec/Chest Involvement: No; HER2: Positive; Multicentric/Multifocal: No; Lymphadenopathy: Yes; Definitive Surgery Type: Mastectomy; Neoadjuvant Chemo: Yes; Adjuvant Chemo: No; Neoadjuvant Anti-HER2: Yes; Adjuvant Anti-HER2: Yes; Metastatic at Presentation: No; Contralateral Breast Involvement: Yes; Staging M: 0; Skin/Nipple Involvement: No; Neoadjuvant Radiation Therapy: No; Recurrence: Yes; Known Ovarian Status: No; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No; Staging N: 0"
+    },
+    {
+      "pid": "Breast_MRI_445",
+      "true_label": 1,
+      "final_pred": 2,
+      "slice_preds": [
+        2,
+        2,
+        2
+      ],
+      "raw_outputs": [
+        "Grade 3",
+        "Grade 3",
+        "Grade 3"
+      ],
+      "clinical": "Menopause: Pre-menopausal; ER: Positive; PR: Positive; Surgery: Yes; Adjuvant Radiation Therapy: No; Adjuvant Endocrine Therapy: Yes; Pec/Chest Involvement: No; HER2: Negative; Multicentric/Multifocal: Yes; Lymphadenopathy: No; Definitive Surgery Type: Mastectomy; Neoadjuvant Chemo: No; Adjuvant Chemo: No; Neoadjuvant Anti-HER2: No; Adjuvant Anti-HER2: No; Metastatic at Presentation: No; Contralateral Breast Involvement: No; Staging M: 0; Skin/Nipple Involvement: No; Neoadjuvant Radiation Therapy: No; Recurrence: Yes; Known Ovarian Status: No; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No; Staging N: 0"
+    },
+    {
+      "pid": "Breast_MRI_465",
+      "true_label": 2,
+      "final_pred": 2,
+      "slice_preds": [
+        2,
+        2,
+        2
+      ],
+      "raw_outputs": [
+        "Grade 3",
+        "Grade 3",
+        "Grade 3"
+      ],
+      "clinical": "Menopause: Pre-menopausal; ER: Positive; PR: Negative; Surgery: Yes; Adjuvant Radiation Therapy: Yes; Adjuvant Endocrine Therapy: Yes; Pec/Chest Involvement: No; HER2: Negative; Multicentric/Multifocal: Yes; Lymphadenopathy: Yes; Definitive Surgery Type: Mastectomy; Neoadjuvant Chemo: Yes; Adjuvant Chemo: No; Neoadjuvant Anti-HER2: Yes; Adjuvant Anti-HER2: Yes; Metastatic at Presentation: No; Contralateral Breast Involvement: Yes; Staging M: 0; Skin/Nipple Involvement: Yes; Neoadjuvant Radiation Therapy: No; Recurrence: No; Known Ovarian Status: No; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No; Staging N: 3"
+    },
+    {
+      "pid": "Breast_MRI_494",
+      "true_label": 1,
+      "final_pred": 0,
+      "slice_preds": [
+        0,
+        0,
+        0
+      ],
+      "raw_outputs": [
+        "Grade 1",
+        "Grade 1",
+        "Grade 1"
+      ],
+      "clinical": "Menopause: Pre-menopausal; ER: Negative; PR: Negative; Surgery: Yes; Adjuvant Radiation Therapy: No; Adjuvant Endocrine Therapy: No; Pec/Chest Involvement: No; HER2: Negative; Multicentric/Multifocal: No; Lymphadenopathy: No; Definitive Surgery Type: Mastectomy; Neoadjuvant Chemo: No; Adjuvant Chemo: Yes; Neoadjuvant Anti-HER2: No; Adjuvant Anti-HER2: No; Metastatic at Presentation: No; Contralateral Breast Involvement: No; Staging M: -1; Skin/Nipple Involvement: No; Neoadjuvant Radiation Therapy: No; Recurrence: No; Known Ovarian Status: Yes; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No; Staging N: 0"
+    },
+    {
+      "pid": "Breast_MRI_500",
+      "true_label": 1,
+      "final_pred": 1,
+      "slice_preds": [
+        1,
+        1,
+        1
+      ],
+      "raw_outputs": [
+        "Grade 2",
+        "Grade 2",
+        "Grade 2"
+      ],
+      "clinical": "Menopause: Post-menopausal; ER: Positive; PR: Negative; Surgery: Yes; Adjuvant Radiation Therapy: Yes; Adjuvant Endocrine Therapy: Yes; Pec/Chest Involvement: No; HER2: Negative; Multicentric/Multifocal: Yes; Lymphadenopathy: No; Definitive Surgery Type: BCS; Neoadjuvant Chemo: No; Adjuvant Chemo: Yes; Neoadjuvant Anti-HER2: No; Adjuvant Anti-HER2: No; Metastatic at Presentation: No; Contralateral Breast Involvement: No; Staging M: 0; Skin/Nipple Involvement: No; Neoadjuvant Radiation Therapy: No; Recurrence: No; Known Ovarian Status: Yes; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No; Staging N: 1"
+    },
+    {
+      "pid": "Breast_MRI_526",
+      "true_label": 0,
+      "final_pred": 1,
+      "slice_preds": [
+        1,
+        1,
+        1
+      ],
+      "raw_outputs": [
+        "Grade 2",
+        "Grade 2",
+        "Grade 2"
+      ],
+      "clinical": "Menopause: Pre-menopausal; ER: Positive; PR: Positive; Surgery: Yes; Adjuvant Radiation Therapy: No; Adjuvant Endocrine Therapy: Yes; Pec/Chest Involvement: No; HER2: Negative; Multicentric/Multifocal: Yes; Lymphadenopathy: No; Definitive Surgery Type: Mastectomy; Neoadjuvant Chemo: No; Adjuvant Chemo: No; Neoadjuvant Anti-HER2: No; Adjuvant Anti-HER2: No; Metastatic at Presentation: No; Contralateral Breast Involvement: No; Staging M: 0; Skin/Nipple Involvement: No; Neoadjuvant Radiation Therapy: No; Recurrence: No; Known Ovarian Status: No; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No; Staging N: 0"
+    },
+    {
+      "pid": "Breast_MRI_539",
+      "true_label": 2,
+      "final_pred": 2,
+      "slice_preds": [
+        2,
+        2,
+        2
+      ],
+      "raw_outputs": [
+        "Grade 3",
+        "Grade 3",
+        "Grade 3"
+      ],
+      "clinical": "Menopause: Post-menopausal; ER: Positive; PR: Negative; Surgery: Yes; Adjuvant Radiation Therapy: Yes; Adjuvant Endocrine Therapy: Yes; Pec/Chest Involvement: No; HER2: Positive; Multicentric/Multifocal: No; Lymphadenopathy: Yes; Definitive Surgery Type: Mastectomy; Neoadjuvant Chemo: Yes; Adjuvant Chemo: No; Neoadjuvant Anti-HER2: Yes; Adjuvant Anti-HER2: No; Metastatic at Presentation: No; Contralateral Breast Involvement: No; Staging M: -1; Skin/Nipple Involvement: Yes; Neoadjuvant Radiation Therapy: No; Recurrence: No; Known Ovarian Status: No; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No; Staging N: 1"
+    },
+    {
+      "pid": "Breast_MRI_540",
+      "true_label": 0,
+      "final_pred": 1,
+      "slice_preds": [
+        1,
+        1,
+        1
+      ],
+      "raw_outputs": [
+        "Grade 2",
+        "Grade 2",
+        "Grade 2"
+      ],
+      "clinical": "Menopause: N/A; ER: Positive; PR: Positive; Surgery: Yes; Adjuvant Radiation Therapy: No; Adjuvant Endocrine Therapy: Yes; Pec/Chest Involvement: No; HER2: Negative; Multicentric/Multifocal: Yes; Lymphadenopathy: No; Definitive Surgery Type: Mastectomy; Neoadjuvant Chemo: No; Adjuvant Chemo: No; Neoadjuvant Anti-HER2: No; Adjuvant Anti-HER2: No; Metastatic at Presentation: No; Contralateral Breast Involvement: Yes; Staging M: 0; Skin/Nipple Involvement: No; Neoadjuvant Radiation Therapy: No; Recurrence: No; Known Ovarian Status: No; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No; Staging N: 0"
+    },
+    {
+      "pid": "Breast_MRI_553",
+      "true_label": 1,
+      "final_pred": 1,
+      "slice_preds": [
+        1,
+        1,
+        1
+      ],
+      "raw_outputs": [
+        "Grade 2",
+        "Grade 2",
+        "Grade 2"
+      ],
+      "clinical": "Menopause: Post-menopausal; ER: Positive; PR: Positive; Surgery: Yes; Adjuvant Radiation Therapy: No; Adjuvant Endocrine Therapy: Yes; Pec/Chest Involvement: No; HER2: Negative; Multicentric/Multifocal: No; Lymphadenopathy: No; Definitive Surgery Type: Mastectomy; Neoadjuvant Chemo: No; Adjuvant Chemo: Yes; Neoadjuvant Anti-HER2: No; Adjuvant Anti-HER2: No; Metastatic at Presentation: No; Contralateral Breast Involvement: No; Staging M: 0; Skin/Nipple Involvement: No; Neoadjuvant Radiation Therapy: No; Recurrence: No; Known Ovarian Status: No; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No; Staging N: 1"
+    },
+    {
+      "pid": "Breast_MRI_586",
+      "true_label": 1,
+      "final_pred": 1,
+      "slice_preds": [
+        1,
+        1,
+        1
+      ],
+      "raw_outputs": [
+        "Grade 2",
+        "Grade 2",
+        "Grade 2"
+      ],
+      "clinical": "Menopause: Pre-menopausal; ER: Positive; PR: Positive; Surgery: Yes; Adjuvant Radiation Therapy: Yes; Adjuvant Endocrine Therapy: Yes; Pec/Chest Involvement: No; HER2: Negative; Multicentric/Multifocal: No; Lymphadenopathy: Yes; Definitive Surgery Type: Mastectomy; Neoadjuvant Chemo: No; Adjuvant Chemo: Yes; Neoadjuvant Anti-HER2: No; Adjuvant Anti-HER2: No; Metastatic at Presentation: No; Contralateral Breast Involvement: No; Staging M: -1; Skin/Nipple Involvement: No; Neoadjuvant Radiation Therapy: No; Recurrence: No; Known Ovarian Status: No; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No; Staging N: 3"
+    },
+    {
+      "pid": "Breast_MRI_606",
+      "true_label": 0,
+      "final_pred": 1,
+      "slice_preds": [
+        1,
+        1,
+        1
+      ],
+      "raw_outputs": [
+        "Grade 2",
+        "Grade 2",
+        "Grade 2"
+      ],
+      "clinical": "Menopause: Pre-menopausal; ER: Positive; PR: Negative; Surgery: Yes; Adjuvant Radiation Therapy: No; Adjuvant Endocrine Therapy: Yes; Pec/Chest Involvement: No; HER2: Positive; Multicentric/Multifocal: Yes; Lymphadenopathy: No; Definitive Surgery Type: Mastectomy; Neoadjuvant Chemo: No; Adjuvant Chemo: Yes; Neoadjuvant Anti-HER2: No; Adjuvant Anti-HER2: Yes; Metastatic at Presentation: No; Contralateral Breast Involvement: No; Staging M: -1; Skin/Nipple Involvement: No; Neoadjuvant Radiation Therapy: No; Recurrence: No; Known Ovarian Status: No; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No; Staging N: 0"
+    },
+    {
+      "pid": "Breast_MRI_665",
+      "true_label": 1,
+      "final_pred": 0,
+      "slice_preds": [
+        0,
+        0,
+        0
+      ],
+      "raw_outputs": [
+        "Grade 1",
+        "Grade 1",
+        "Grade 1"
+      ],
+      "clinical": "Menopause: Pre-menopausal; ER: Positive; PR: Positive; Surgery: Yes; Adjuvant Radiation Therapy: No; Adjuvant Endocrine Therapy: Yes; Pec/Chest Involvement: No; HER2: Negative; Multicentric/Multifocal: No; Lymphadenopathy: No; Definitive Surgery Type: Mastectomy; Neoadjuvant Chemo: No; Adjuvant Chemo: No; Neoadjuvant Anti-HER2: No; Adjuvant Anti-HER2: No; Metastatic at Presentation: No; Contralateral Breast Involvement: No; Staging M: -1; Skin/Nipple Involvement: No; Neoadjuvant Radiation Therapy: No; Recurrence: No; Known Ovarian Status: No; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No; Staging N: 0"
+    },
+    {
+      "pid": "Breast_MRI_671",
+      "true_label": 1,
+      "final_pred": 1,
+      "slice_preds": [
+        1,
+        1,
+        1
+      ],
+      "raw_outputs": [
+        "Grade 2",
+        "Grade 2",
+        "Grade 2"
+      ],
+      "clinical": "Menopause: Pre-menopausal; ER: Positive; PR: Positive; Surgery: Yes; Adjuvant Radiation Therapy: Yes; Adjuvant Endocrine Therapy: Yes; Pec/Chest Involvement: No; HER2: Negative; Multicentric/Multifocal: No; Lymphadenopathy: Yes; Definitive Surgery Type: Mastectomy; Neoadjuvant Chemo: No; Adjuvant Chemo: Yes; Neoadjuvant Anti-HER2: No; Adjuvant Anti-HER2: No; Metastatic at Presentation: No; Contralateral Breast Involvement: No; Staging M: 0; Skin/Nipple Involvement: No; Neoadjuvant Radiation Therapy: No; Recurrence: No; Known Ovarian Status: No; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No; Staging N: 1"
+    },
+    {
+      "pid": "Breast_MRI_708",
+      "true_label": 0,
+      "final_pred": 2,
+      "slice_preds": [
+        2,
+        2,
+        2
+      ],
+      "raw_outputs": [
+        "Grade 3",
+        "Grade 3",
+        "Grade 3"
+      ],
+      "clinical": "Menopause: Post-menopausal; ER: Positive; PR: Negative; Surgery: Yes; Adjuvant Radiation Therapy: Yes; Adjuvant Endocrine Therapy: Yes; Pec/Chest Involvement: No; HER2: Negative; Multicentric/Multifocal: Yes; Lymphadenopathy: No; Definitive Surgery Type: Mastectomy; Neoadjuvant Chemo: No; Adjuvant Chemo: Yes; Neoadjuvant Anti-HER2: No; Adjuvant Anti-HER2: No; Metastatic at Presentation: No; Contralateral Breast Involvement: No; Staging M: 0; Skin/Nipple Involvement: No; Neoadjuvant Radiation Therapy: No; Recurrence: Yes; Known Ovarian Status: No; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No; Staging N: 3"
+    },
+    {
+      "pid": "Breast_MRI_712",
+      "true_label": 1,
+      "final_pred": 1,
+      "slice_preds": [
+        1,
+        1,
+        1
+      ],
+      "raw_outputs": [
+        "Grade 2",
+        "Grade 2",
+        "Grade 2"
+      ],
+      "clinical": "Menopause: Post-menopausal; ER: Positive; PR: Negative; Surgery: Yes; Adjuvant Radiation Therapy: No; Adjuvant Endocrine Therapy: Yes; Pec/Chest Involvement: No; HER2: Negative; Multicentric/Multifocal: No; Lymphadenopathy: No; Definitive Surgery Type: BCS; Neoadjuvant Chemo: No; Adjuvant Chemo: No; Neoadjuvant Anti-HER2: No; Adjuvant Anti-HER2: No; Metastatic at Presentation: No; Contralateral Breast Involvement: No; Staging M: -1; Skin/Nipple Involvement: No; Neoadjuvant Radiation Therapy: Yes; Recurrence: No; Known Ovarian Status: No; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No; Staging N: 0"
+    },
+    {
+      "pid": "Breast_MRI_716",
+      "true_label": 0,
+      "final_pred": 1,
+      "slice_preds": [
+        1,
+        1,
+        1
+      ],
+      "raw_outputs": [
+        "Grade 2",
+        "Grade 2",
+        "Grade 2"
+      ],
+      "clinical": "Menopause: Post-menopausal; ER: Positive; PR: Positive; Surgery: Yes; Adjuvant Radiation Therapy: Yes; Adjuvant Endocrine Therapy: Yes; Pec/Chest Involvement: No; HER2: Negative; Multicentric/Multifocal: Yes; Lymphadenopathy: No; Definitive Surgery Type: BCS; Neoadjuvant Chemo: No; Adjuvant Chemo: No; Neoadjuvant Anti-HER2: No; Adjuvant Anti-HER2: No; Metastatic at Presentation: No; Contralateral Breast Involvement: No; Staging M: 0; Skin/Nipple Involvement: No; Neoadjuvant Radiation Therapy: No; Recurrence: No; Known Ovarian Status: No; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No; Staging N: 0"
+    },
+    {
+      "pid": "Breast_MRI_717",
+      "true_label": 2,
+      "final_pred": 2,
+      "slice_preds": [
+        2,
+        2,
+        2
+      ],
+      "raw_outputs": [
+        "Grade 3",
+        "Grade 3",
+        "Grade 3"
+      ],
+      "clinical": "Menopause: Pre-menopausal; ER: Positive; PR: Positive; Surgery: Yes; Adjuvant Radiation Therapy: Yes; Adjuvant Endocrine Therapy: Yes; Pec/Chest Involvement: No; HER2: Positive; Multicentric/Multifocal: Yes; Lymphadenopathy: Yes; Definitive Surgery Type: Mastectomy; Neoadjuvant Chemo: Yes; Adjuvant Chemo: No; Neoadjuvant Anti-HER2: Yes; Adjuvant Anti-HER2: Yes; Metastatic at Presentation: No; Contralateral Breast Involvement: Yes; Staging M: -1; Skin/Nipple Involvement: Yes; Neoadjuvant Radiation Therapy: No; Recurrence: Yes; Known Ovarian Status: No; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No; Staging N: 0"
+    },
+    {
+      "pid": "Breast_MRI_738",
+      "true_label": 1,
+      "final_pred": 1,
+      "slice_preds": [
+        1,
+        1,
+        1
+      ],
+      "raw_outputs": [
+        "Grade 2",
+        "Grade 2",
+        "Grade 2"
+      ],
+      "clinical": "Menopause: Post-menopausal; ER: Positive; PR: Positive; Surgery: Yes; Adjuvant Radiation Therapy: Yes; Adjuvant Endocrine Therapy: Yes; Pec/Chest Involvement: No; HER2: Negative; Multicentric/Multifocal: Yes; Lymphadenopathy: No; Definitive Surgery Type: Mastectomy; Neoadjuvant Chemo: No; Adjuvant Chemo: No; Neoadjuvant Anti-HER2: No; Adjuvant Anti-HER2: No; Metastatic at Presentation: No; Contralateral Breast Involvement: Yes; Staging M: -1; Skin/Nipple Involvement: Yes; Neoadjuvant Radiation Therapy: No; Recurrence: No; Known Ovarian Status: No; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No; Staging N: 1"
+    },
+    {
+      "pid": "Breast_MRI_760",
+      "true_label": 0,
+      "final_pred": 2,
+      "slice_preds": [
+        2,
+        2,
+        2
+      ],
+      "raw_outputs": [
+        "Grade 3",
+        "Grade 3",
+        "Grade 3"
+      ],
+      "clinical": "Menopause: Pre-menopausal; ER: Positive; PR: Positive; Surgery: Yes; Adjuvant Radiation Therapy: Yes; Adjuvant Endocrine Therapy: Yes; Pec/Chest Involvement: No; HER2: Negative; Multicentric/Multifocal: Yes; Lymphadenopathy: Yes; Definitive Surgery Type: Mastectomy; Neoadjuvant Chemo: No; Adjuvant Chemo: Yes; Neoadjuvant Anti-HER2: No; Adjuvant Anti-HER2: No; Metastatic at Presentation: No; Contralateral Breast Involvement: No; Staging M: -1; Skin/Nipple Involvement: Yes; Neoadjuvant Radiation Therapy: No; Recurrence: No; Known Ovarian Status: Yes; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No; Staging N: 2"
+    },
+    {
+      "pid": "Breast_MRI_766",
+      "true_label": 0,
+      "final_pred": 2,
+      "slice_preds": [
+        2,
+        2,
+        2
+      ],
+      "raw_outputs": [
+        "Grade 3",
+        "Grade 3",
+        "Grade 3"
+      ],
+      "clinical": "Menopause: Post-menopausal; ER: Positive; PR: Positive; Surgery: Yes; Adjuvant Radiation Therapy: Yes; Adjuvant Endocrine Therapy: Yes; Pec/Chest Involvement: No; HER2: Negative; Multicentric/Multifocal: Yes; Lymphadenopathy: No; Definitive Surgery Type: Mastectomy; Neoadjuvant Chemo: No; Adjuvant Chemo: Yes; Neoadjuvant Anti-HER2: No; Adjuvant Anti-HER2: No; Metastatic at Presentation: No; Contralateral Breast Involvement: No; Staging M: -1; Skin/Nipple Involvement: Yes; Neoadjuvant Radiation Therapy: No; Recurrence: No; Known Ovarian Status: Yes; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No; Staging N: 3"
+    },
+    {
+      "pid": "Breast_MRI_794",
+      "true_label": 1,
+      "final_pred": 1,
+      "slice_preds": [
+        1,
+        1,
+        1
+      ],
+      "raw_outputs": [
+        "Grade 2",
+        "Grade 2",
+        "Grade 2"
+      ],
+      "clinical": "Menopause: Post-menopausal; ER: Positive; PR: Positive; Surgery: Yes; Adjuvant Radiation Therapy: Yes; Adjuvant Endocrine Therapy: Yes; Pec/Chest Involvement: No; HER2: Negative; Multicentric/Multifocal: Yes; Lymphadenopathy: No; Definitive Surgery Type: Mastectomy; Neoadjuvant Chemo: No; Adjuvant Chemo: Yes; Neoadjuvant Anti-HER2: No; Adjuvant Anti-HER2: No; Metastatic at Presentation: No; Contralateral Breast Involvement: No; Staging M: 0; Skin/Nipple Involvement: Yes; Neoadjuvant Radiation Therapy: No; Recurrence: No; Known Ovarian Status: Yes; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No; Staging N: 2"
+    },
+    {
+      "pid": "Breast_MRI_799",
+      "true_label": 1,
+      "final_pred": 1,
+      "slice_preds": [
+        1,
+        1,
+        0
+      ],
+      "raw_outputs": [
+        "Grade 2",
+        "Grade 2",
+        "Grade 1"
+      ],
+      "clinical": "Menopause: Pre-menopausal; ER: Positive; PR: Positive; Surgery: Yes; Adjuvant Radiation Therapy: Yes; Adjuvant Endocrine Therapy: Yes; Pec/Chest Involvement: No; HER2: Negative; Multicentric/Multifocal: No; Lymphadenopathy: No; Definitive Surgery Type: Mastectomy; Neoadjuvant Chemo: Yes; Adjuvant Chemo: No; Neoadjuvant Anti-HER2: No; Adjuvant Anti-HER2: No; Metastatic at Presentation: No; Contralateral Breast Involvement: No; Staging M: 0; Skin/Nipple Involvement: No; Neoadjuvant Radiation Therapy: No; Recurrence: No; Known Ovarian Status: No; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No; Staging N: 0"
+    },
+    {
+      "pid": "Breast_MRI_831",
+      "true_label": 1,
+      "final_pred": 1,
+      "slice_preds": [
+        1,
+        1,
+        1
+      ],
+      "raw_outputs": [
+        "Grade 2",
+        "Grade 2",
+        "Grade 2"
+      ],
+      "clinical": "Menopause: Pre-menopausal; ER: Positive; PR: Positive; Surgery: Yes; Adjuvant Radiation Therapy: Yes; Adjuvant Endocrine Therapy: Yes; Pec/Chest Involvement: No; HER2: Negative; Multicentric/Multifocal: Yes; Lymphadenopathy: Yes; Definitive Surgery Type: Mastectomy; Neoadjuvant Chemo: Yes; Adjuvant Chemo: No; Neoadjuvant Anti-HER2: No; Adjuvant Anti-HER2: No; Metastatic at Presentation: No; Contralateral Breast Involvement: No; Staging M: -1; Skin/Nipple Involvement: No; Neoadjuvant Radiation Therapy: No; Recurrence: No; Known Ovarian Status: No; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No; Staging N: 1"
+    },
+    {
+      "pid": "Breast_MRI_852",
+      "true_label": 1,
+      "final_pred": 2,
+      "slice_preds": [
+        2,
+        2,
+        2
+      ],
+      "raw_outputs": [
+        "Grade 3",
+        "Grade 3",
+        "Grade 3"
+      ],
+      "clinical": "Menopause: Pre-menopausal; ER: Positive; PR: Positive; Surgery: Yes; Adjuvant Radiation Therapy: No; Adjuvant Endocrine Therapy: Yes; Pec/Chest Involvement: No; HER2: Negative; Multicentric/Multifocal: Yes; Lymphadenopathy: No; Definitive Surgery Type: Mastectomy; Neoadjuvant Chemo: No; Adjuvant Chemo: Yes; Neoadjuvant Anti-HER2: No; Adjuvant Anti-HER2: No; Metastatic at Presentation: No; Contralateral Breast Involvement: No; Staging M: -1; Skin/Nipple Involvement: Yes; Neoadjuvant Radiation Therapy: No; Recurrence: No; Known Ovarian Status: Yes; Oophorectomy for Endocrine Therapy: Yes; Neoadjuvant Endocrine Therapy: No; Staging N: 0"
+    },
+    {
+      "pid": "Breast_MRI_866",
+      "true_label": 1,
+      "final_pred": 2,
+      "slice_preds": [
+        2,
+        1,
+        2
+      ],
+      "raw_outputs": [
+        "Grade 3",
+        "Grade 2",
+        "Grade 3"
+      ],
+      "clinical": "Menopause: Pre-menopausal; ER: Positive; PR: Positive; Surgery: Yes; Adjuvant Radiation Therapy: No; Adjuvant Endocrine Therapy: No; Pec/Chest Involvement: No; HER2: Negative; Multicentric/Multifocal: Yes; Lymphadenopathy: Yes; Definitive Surgery Type: Mastectomy; Neoadjuvant Chemo: No; Adjuvant Chemo: No; Neoadjuvant Anti-HER2: No; Adjuvant Anti-HER2: No; Metastatic at Presentation: Yes; Contralateral Breast Involvement: No; Staging M: 1; Skin/Nipple Involvement: No; Neoadjuvant Radiation Therapy: No; Recurrence: No; Known Ovarian Status: No; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No; Staging N: 1"
+    },
+    {
+      "pid": "Breast_MRI_873",
+      "true_label": 2,
+      "final_pred": 2,
+      "slice_preds": [
+        2,
+        2,
+        2
+      ],
+      "raw_outputs": [
+        "Grade 3",
+        "Grade 3",
+        "Grade 3"
+      ],
+      "clinical": "Menopause: Post-menopausal; ER: Negative; PR: Negative; Surgery: No; Adjuvant Radiation Therapy: No; Adjuvant Endocrine Therapy: No; Pec/Chest Involvement: No; HER2: Positive; Multicentric/Multifocal: No; Lymphadenopathy: Yes; Definitive Surgery Type: NP; Neoadjuvant Chemo: Yes; Adjuvant Chemo: No; Neoadjuvant Anti-HER2: Yes; Adjuvant Anti-HER2: Yes; Metastatic at Presentation: No; Contralateral Breast Involvement: Yes; Staging M: -1; Skin/Nipple Involvement: No; Neoadjuvant Radiation Therapy: No; Recurrence: No; Known Ovarian Status: No; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No; Staging N: 1"
+    },
+    {
+      "pid": "Breast_MRI_920",
+      "true_label": 1,
+      "final_pred": 1,
+      "slice_preds": [
+        1,
+        1,
+        1
+      ],
+      "raw_outputs": [
+        "Grade 2",
+        "Grade 2",
+        "Grade 2"
+      ],
+      "clinical": "Menopause: Post-menopausal; ER: Positive; PR: Positive; Surgery: Yes; Adjuvant Radiation Therapy: Yes; Adjuvant Endocrine Therapy: Yes; Pec/Chest Involvement: No; HER2: Negative; Multicentric/Multifocal: Yes; Lymphadenopathy: No; Definitive Surgery Type: Mastectomy; Neoadjuvant Chemo: No; Adjuvant Chemo: No; Neoadjuvant Anti-HER2: No; Adjuvant Anti-HER2: No; Metastatic at Presentation: No; Contralateral Breast Involvement: Yes; Staging M: 0; Skin/Nipple Involvement: No; Neoadjuvant Radiation Therapy: No; Recurrence: No; Known Ovarian Status: No; Oophorectomy for Endocrine Therapy: No; Neoadjuvant Endocrine Therapy: No; Staging N: 0"
+    }
+  ]
+}
