@@ -261,3 +261,42 @@ Clinical branch:  31-d encoded features -------> Linear(31, proj_dim)  -> ReLU -
 
 - **Image-only performance is comparable to multimodal.** The image-only unimodal model achieves balanced accuracy on par with the multimodal (image + clinical) model, suggesting that the Swin-Tiny image features already capture most of the discriminative signal for Nottingham grading.
 - **Multimodal model fails to identify Grade 1 tumors.** Grade 1 tumors closely resemble normal breast tissue with minimal contrast uptake, making them difficult to distinguish visually. The multimodal fusion model struggles with this class, misclassifying most Grade 1 cases as Grade 2. This highlights a key limitation that more advanced architectures (e.g., multiplex graph networks) may need to address.
+
+## Compute Requirements
+
+### Hardware
+
+All experiments were run on an Apple Silicon Mac with MPS (Metal Performance Shaders). The Ovis2 VLM pipeline requires a GPU (MPS or CUDA); the Swin-Tiny baseline runs on CPU.
+
+### Model sizes
+
+| Model | Parameters | Disk / VRAM (approx.) |
+|-------|------------|----------------------|
+| Ovis2-4B (bfloat16) | 4B | ~8 GB |
+| Swin-Tiny (ImageNet-1K, frozen) | 28M | ~110 MB |
+
+### Runtime
+
+| Pipeline | Patients | Inference calls | Total runtime | Notes |
+|----------|----------|-----------------|---------------|-------|
+| Swin-Tiny + MLP | 100 | N/A (training) | ~78 s | Includes feature extraction, 144-combo grid search (5-fold CV), and final training (46 epochs, early stopped) |
+| Ovis2 proportional crop | 60 | 180 | ~15-20 min | 3 slices/patient, sequential few-shot inference on MPS |
+| Ovis2 no crop | 60 | 180 | ~15-20 min | Same as above; full-size images are slower per call |
+| Ovis2 fixed 256x256 | 100 | 300 | ~25-35 min | 3 slices/patient, sequential few-shot inference on MPS |
+
+### Breakdown
+
+- **DICOM processing** -- ~1-2 min for the full dataset (100 patients). Composites are cached as PNGs so this cost is paid only once.
+- **Ovis2 model loading** -- ~30-60 s to download and load the 4B-parameter model onto MPS. Sub-second on subsequent runs if weights are cached locally.
+- **Ovis2 per-patient inference** -- ~5-10 s per patient (3 forward passes with `max_new_tokens=16`). The main bottleneck is sequential autoregressive decoding on MPS.
+- **Swin-Tiny feature extraction** -- ~10 s for 100 patients (300 images). Features are cached to disk (`swin_features.npz`) for reuse.
+- **Swin grid search** -- ~50 s for 144 hyperparameter combinations x 5 folds. Each fold trains a small MLP (< 1K trainable parameters) for up to 200 epochs with early stopping.
+
+### Disk space
+
+| Item | Size |
+|------|------|
+| DICOM data (`data/Duke-Breast-Cancer-MRI/`) | ~250 GB (full dataset from TCIA) |
+| Cached composites (PNGs, per crop mode) | ~5-15 MB |
+| Swin feature cache (`swin_features.npz`) | ~300 KB |
+| Ovis2 model weights (HuggingFace cache) | ~8 GB |
