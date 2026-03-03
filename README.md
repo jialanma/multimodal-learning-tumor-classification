@@ -277,7 +277,7 @@ All experiments were run on an Apple Silicon Mac with MPS (Metal Performance Sha
 
 | Pipeline | Patients | Inference calls | Total runtime | Notes |
 |----------|----------|-----------------|---------------|-------|
-| Swin-Tiny + MLP | 100 | N/A (training) | ~78 s | Includes feature extraction, 144-combo grid search (5-fold CV), and final training (46 epochs, early stopped) |
+| Swin-Tiny + MLP | 100 | 300 | ~78 s | Includes feature extraction (300 images), 144-combo grid search (5-fold CV), and final training (46 epochs, early stopped) |
 | Ovis2 proportional crop | 60 | 180 | ~15-20 min | 3 slices/patient, sequential few-shot inference on MPS |
 | Ovis2 no crop | 60 | 180 | ~15-20 min | Same as above; full-size images are slower per call |
 | Ovis2 fixed 256x256 | 100 | 300 | ~25-35 min | 3 slices/patient, sequential few-shot inference on MPS |
