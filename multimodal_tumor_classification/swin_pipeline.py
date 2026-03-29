@@ -14,6 +14,7 @@ from torchvision import transforms, models
 from sklearn.model_selection import StratifiedKFold, train_test_split
 from sklearn.metrics import classification_report, f1_score, balanced_accuracy_score, confusion_matrix
 from sklearn.utils.class_weight import compute_class_weight
+from typing import Optional
 from itertools import product
 from collections import Counter
 
@@ -69,7 +70,7 @@ def extract_swin_features(patient_ids: list, composites_dir: str,
 
     print(f"Extracting Swin-Tiny features on {device}...")
     swin = models.swin_t(weights=models.Swin_T_Weights.IMAGENET1K_V1)
-    swin.head = nn.Identity()
+    swin.head = nn.Identity()  # type: ignore[assignment]
     swin = swin.to(device).eval()
 
     all_embeddings = []
@@ -82,7 +83,7 @@ def extract_swin_features(patient_ids: list, composites_dir: str,
             all_embeddings.append(np.zeros(768, dtype=np.float32))
             continue
 
-        tensors = [IMG_TRANSFORM(Image.open(sp).convert("RGB")) for sp in slice_paths]
+        tensors: list[torch.Tensor] = [IMG_TRANSFORM(Image.open(sp).convert("RGB")) for sp in slice_paths]  # pyright: ignore[reportAssignmentType]
         batch = torch.stack(tensors).to(device)
         with torch.no_grad():
             embs = swin(batch).cpu().numpy()
@@ -137,7 +138,7 @@ def _make_loader(img, clin, labels, batch_size, shuffle):
     if shuffle:
         class_counts = np.bincount(labels, minlength=NUM_CLASSES)
         sample_weights = 1.0 / class_counts[labels]
-        sampler = WeightedRandomSampler(weights=sample_weights, num_samples=len(ds),
+        sampler = WeightedRandomSampler(weights=sample_weights.tolist(), num_samples=len(ds),
                                         replacement=True, generator=g)
         return DataLoader(ds, batch_size=batch_size, sampler=sampler)
     return DataLoader(ds, batch_size=batch_size, shuffle=False)
@@ -160,7 +161,7 @@ def train_and_evaluate(img_tr, clin_tr, y_tr, img_val, clin_val, y_val,
     else:
         weight = None
     criterion = nn.CrossEntropyLoss(weight=weight)
-    optimizer = torch.optim.Adam(model.parameters(), lr=hparams["lr"],
+    optimizer = torch.optim.Adam(model.parameters(), lr=hparams["lr"],  # pyright: ignore[reportPrivateImportUsage]
                                  weight_decay=hparams["weight_decay"])
 
     train_loader = _make_loader(img_tr, clin_tr, y_tr, hparams["batch_size"], shuffle=True)
@@ -244,7 +245,7 @@ def train_final_with_history(img_tr, clin_tr, y_tr, img_val, clin_val, y_val,
     else:
         weight = None
     criterion = nn.CrossEntropyLoss(weight=weight)
-    optimizer = torch.optim.Adam(model.parameters(), lr=hparams["lr"],
+    optimizer = torch.optim.Adam(model.parameters(), lr=hparams["lr"],  # pyright: ignore[reportPrivateImportUsage]
                                  weight_decay=hparams["weight_decay"])
 
     train_loader = _make_loader(img_tr, clin_tr, y_tr, hparams["batch_size"], shuffle=True)
@@ -311,8 +312,8 @@ def train_final_with_history(img_tr, clin_tr, y_tr, img_val, clin_val, y_val,
 # FULL PIPELINE
 # =============================================================================
 
-def run_swin_pipeline(output_dir: str = None, composites_dir: str = None,
-                      num_epochs: int = None):
+def run_swin_pipeline(output_dir: Optional[str] = None, composites_dir: Optional[str] = None,
+                      num_epochs: Optional[int] = None):
     """Full Swin pipeline: extract features -> grid search CV -> train final -> evaluate."""
     np.random.seed(RANDOM_SEED)
     torch.manual_seed(RANDOM_SEED)
@@ -464,7 +465,7 @@ def run_swin_pipeline(output_dir: str = None, composites_dir: str = None,
             "cv_folds": SWIN_NUM_CV_FOLDS,
         },
         "best_hyperparams": {
-            k: (v if v is not None else "none") for k, v in best_params.items()
+            k: (v if v is not None else "none") for k, v in (best_params or {}).items()
         },
         "cv_best_f1": float(search_results[0]["mean_f1"]),
         "early_stopping": {
